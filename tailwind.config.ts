@@ -13,18 +13,21 @@ const config: Config = {
         "2xl": "800px",
       },
     },
-    colors: {
-      primary: {
-        DEFAULT: "hsl(var(--primary))",
-        faded: "hsl(var(--primary-faded))",
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          faded: "hsl(var(--primary-faded))",
+        },
+        transparent: "transparent",
+        background: "hsl(var(--background))",
+        rating: "hsl(var(--rating))",
+        "text-on-primary": "hsl(var(--text-on-primary))",
+        "secondary-button-text": "hsl(var(--secondary-button-text))",
+        "button-background": "hsl(var(--button-background))",
+        "input-background": "hsl(var(--input-background))",
+        white: "hsl(var(--white))",
       },
-      transparent: "transparent",
-      background: "hsl(var(--background))",
-      "text-on-primary": "hsl(var(--text-on-primary))",
-      "secondary-button-text": "hsl(var(--secondary-button-text))",
-      "button-background": "hsl(var(--button-background))",
-      "input-background": "hsl(var(--input-background))",
-      white: "hsl(var(--white))",
     },
   },
   plugins: [],

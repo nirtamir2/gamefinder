@@ -11,7 +11,7 @@ export default async function GamePage(props: { params: { gameId: string } }) {
   const games = await fetchGamesData(gameId);
 
   return (
-    <main className="container relative flex min-h-screen">
+    <main className="container min-h-screen">
       <GamesCarousel games={games} />
     </main>
   );
