@@ -13,12 +13,17 @@ const config: Config = {
         "2xl": "800px",
       },
     },
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    colors: {
+      primary: {
+        DEFAULT: "hsl(var(--primary))",
+        faded: "hsl(var(--primary-faded))",
       },
+      background: "hsl(var(--background))",
+      "text-on-primary": "hsl(var(--text-on-primary))",
+      "secondary-button-text": "hsl(var(--secondary-button-text))",
+      "button-background": "hsl(var(--button-background))",
+      "input-background": "hsl(var(--input-background))",
+      white: "hsl(var(--white))",
     },
   },
   plugins: [],
