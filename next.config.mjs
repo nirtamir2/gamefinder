@@ -12,6 +12,15 @@ const jiti = createJiti(new URL(import.meta.url).pathname);
 jiti("./src/env");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "media.rawg.io/**",
+            },
+        ],
+    },
+};
 
 export default withBundleAnalyzer(nextConfig);
