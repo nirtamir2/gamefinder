@@ -7,6 +7,7 @@
 
 declare module "@@@next-static-paths" {
   interface Paths {
-  "/": Record<never, never>
+  "/": Record<never, never>,
+  "/game/[gameId]": {"gameId": string}
   }
 }

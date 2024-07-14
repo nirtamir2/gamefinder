@@ -5,7 +5,7 @@ export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
     RAWG_API_KEY: z.string().min(1),
-    GEMINI_API_KEY: z.string().min(1),
+    GOOGLE_GENERATIVE_AI_API_KEY: z.string().min(1),
     // ONLY_BOOLEAN: z
     // 	.string()
     // 	// only allow "true" or "false"
@@ -20,7 +20,7 @@ export const env = createEnv({
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    GEMINI_API_KEY: process.env["GEMINI_API_KEY"],
+    GOOGLE_GENERATIVE_AI_API_KEY: process.env["GOOGLE_GENERATIVE_AI_API_KEY"],
     RAWG_API_KEY: process.env["RAWG_API_KEY"],
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
