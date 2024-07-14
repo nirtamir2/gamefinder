@@ -24,9 +24,11 @@
     "src/app/**/page.tsx": "pnpm run generate-pages-types"
   },
   "dependencies": {
+    "@ai-sdk/google": "^0.0.27",
     "@next/bundle-analyzer": "^14.2.5",
     "@nirtamir2/next-static-paths": "^0.6.0",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "ai": "^3.2.22",
     "clsx": "^2.1.1",
     "jiti": "^1.21.6",
     "next": "15.0.0-rc.0",

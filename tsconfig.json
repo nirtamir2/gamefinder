@@ -1,21 +1,7 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "incremental": true,
+    "target": "ES2017",
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
@@ -26,13 +12,27 @@
     },
     "resolveJsonModule": true,
     "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "target": "ES2017"
+    ]
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "_version": "2.0.0",
