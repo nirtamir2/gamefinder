@@ -18,6 +18,7 @@ const config: Config = {
         DEFAULT: "hsl(var(--primary))",
         faded: "hsl(var(--primary-faded))",
       },
+      transparent: "transparent",
       background: "hsl(var(--background))",
       "text-on-primary": "hsl(var(--text-on-primary))",
       "secondary-button-text": "hsl(var(--secondary-button-text))",

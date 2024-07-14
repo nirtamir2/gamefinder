@@ -1,28 +1,18 @@
+import { cache } from "react";
 import { GamesCarousel } from "@/app/game/[gameId]/GamesCarousel";
-import { recommendGamesWithAI } from "@/app/game/[gameId]/action";
-import { fetchGames } from "@/lib/fetchGames";
+import { fetchGamesData as _fetchGamesData } from "@/app/game/[gameId]/fetchGamesData";
+
+const fetchGamesData = cache(_fetchGamesData);
 
 export default async function GamePage(props: { params: { gameId: string } }) {
   const { params } = props;
   const { gameId } = params;
-  const aiRecommendationResult = await recommendGamesWithAI({
-    likedGames: [gameId],
-  });
-  const populatedGames = await Promise.all(
-    aiRecommendationResult.recommendedGames.map((game) => {
-      return fetchGames(game);
-    }),
-  );
 
-  const games = populatedGames
-    .map((games) => games.results[0])
-    .filter((game) => game != null);
+  const games = await fetchGamesData(gameId);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="container">
-        <GamesCarousel games={games} />
-      </div>
+    <main className="container relative flex min-h-screen">
+      <GamesCarousel games={games} />
     </main>
   );
 }
