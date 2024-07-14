@@ -21,7 +21,7 @@ export function GamesCarousel(props: { games: Array<Result> }) {
       <CarouselContent>
         {games.map((game) => (
           <CarouselItem key={game.id}>
-            <div key={game.name} className="relative h-full w-full">
+            <div key={game.name} className="relative size-full">
               {game.background_image == null ? (
                 <div className="size-full bg-background"></div>
               ) : (
@@ -36,14 +36,24 @@ export function GamesCarousel(props: { games: Array<Result> }) {
                   alt=""
                 />
               )}
-              <div className="from-transparent absolute bottom-0 z-10 w-full bg-gradient-to-b via-background via-50% to-background p-8 sm:p-24">
+              <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
                 <div>
                   <div className="inline pb-4 pr-4 text-3xl font-semibold text-white">
                     {game.name}
                   </div>
-                  <span className="bg-green-500 text-black rounded p-1 text-xs">
+                  <span className="rounded bg-green-500 p-1 text-xs text-black">
                     {Math.round(game.rating * 20)}
                   </span>
+                </div>
+                <div className="text-lg text-white">{game.slug}</div>
+                <div className="flex flex-wrap gap-4">
+                  {game.genres.map((genere) => {
+                    return (
+                      <div key={genere.id} className="text-lg text-white">
+                        {genere.name}
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="text-lg text-white">{game.released}</div>
               </div>
@@ -51,7 +61,7 @@ export function GamesCarousel(props: { games: Array<Result> }) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="bg-green-200 absolute -left-10 top-1/2 hidden md:block">
+      <div className="absolute -left-10 top-1/2 hidden bg-green-200 md:block">
         <CarouselPrevious />
         <CarouselNext />
       </div>

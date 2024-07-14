@@ -46,11 +46,11 @@ importers:
         version: 3.23.8
     devDependencies:
       '@eslint-react/eslint-plugin':
-        specifier: ^1.5.16
+        specifier: ^1.5.25
         version: 1.5.25(eslint@9.7.0)(typescript@5.5.3)
       '@nirtamir2/eslint-config':
-        specifier: 0.0.2-beta.12
-        version: 0.0.2-beta.12(@eslint-react/eslint-plugin@1.5.25(eslint@9.7.0)(typescript@5.5.3))(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(@types/eslint@8.56.10)(@vue/compiler-sfc@3.4.31)(eslint-plugin-format@0.1.2(eslint@9.7.0))(eslint-plugin-react-hooks@4.6.2(eslint@9.7.0))(eslint-plugin-react-refresh@0.4.8(eslint@9.7.0))(eslint@9.7.0)(prettier-plugin-packagejson@2.5.0(prettier@3.3.3))(prettier-plugin-tailwindcss@0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(prettier@3.3.3))(svelte@4.2.18)(typescript@5.5.3)
+        specifier: ^0.0.2-beta.12
+        version: 0.0.2-beta.12(@eslint-react/eslint-plugin@1.5.25(eslint@9.7.0)(typescript@5.5.3))(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(@types/eslint@8.56.10)(@vue/compiler-sfc@3.4.31)(eslint-plugin-format@0.1.2(eslint@9.7.0))(eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514(eslint@9.7.0))(eslint-plugin-react-refresh@0.4.8(eslint@9.7.0))(eslint@9.7.0)(prettier-plugin-packagejson@2.5.0(prettier@3.3.3))(prettier-plugin-tailwindcss@0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(prettier@3.3.3))(svelte@4.2.18)(typescript@5.5.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3)
@@ -67,19 +67,19 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       eslint:
-        specifier: ^9.6.0
+        specifier: ^9.7.0
         version: 9.7.0
       eslint-config-next:
-        specifier: 14.2.5
-        version: 14.2.5(eslint@9.7.0)(typescript@5.5.3)
+        specifier: ^15.0.0-rc.0
+        version: 15.0.0-rc.0(eslint@9.7.0)(typescript@5.5.3)
       eslint-plugin-format:
         specifier: ^0.1.2
         version: 0.1.2(eslint@9.7.0)
       eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@9.7.0)
+        specifier: 5.1.0-beta-26f2496093-20240514
+        version: 5.1.0-beta-26f2496093-20240514(eslint@9.7.0)
       eslint-plugin-react-refresh:
-        specifier: ^0.4.7
+        specifier: ^0.4.8
         version: 0.4.8(eslint@9.7.0)
       husky:
         specifier: ^9.0.11
@@ -522,8 +522,8 @@ packages:
   '@next/env@15.0.0-rc.0':
     resolution: {integrity: sha512-6W0ndQvHR9sXcqcKeR/inD2UTRCs9+VkSK3lfaGmEuZs7EjwwXMO2BPYjz9oBrtfPL3xuTjtXsHKSsalYQ5l1Q==}
 
-  '@next/eslint-plugin-next@14.2.5':
-    resolution: {integrity: sha512-LY3btOpPh+OTIpviNojDpUdIbHW9j0JBYBjsIp8IxtDFfYFyORvw3yNq6N231FVqQA7n7lwaf7xHbVJlA1ED7g==}
+  '@next/eslint-plugin-next@15.0.0-rc.0':
+    resolution: {integrity: sha512-/rQXrN47qxlFHtZg77LdcCYbL54ogQuLeqIGV/6HMGnZH8iL81XEFOITO8GZjOukR5i3BbwyfrsmIqFl/scg+w==}
 
   '@next/swc-darwin-arm64@15.0.0-rc.0':
     resolution: {integrity: sha512-4OpTXvAWcSabXA5d688zdUwa3sfT9QrLnHMdpv4q2UDnnuqmOI0xLb6lrOxwpi+vHJNkneuNLqyc5HGBhkqL6A==}
@@ -1591,8 +1591,8 @@ packages:
   eslint-config-flat-gitignore@0.1.7:
     resolution: {integrity: sha512-K4UcPriNg6IvNozipPVnLRxuhxys9vRkxYoLLdMPgPDngtWEP/xBT946oUYQHUWLoz4jvX5k+AF/MWh3VN5Lrg==}
 
-  eslint-config-next@14.2.5:
-    resolution: {integrity: sha512-zogs9zlOiZ7ka+wgUnmcM0KBEDjo4Jis7kxN1jvC0N4wynQ2MIx/KBkg4mVF63J5EK4W0QMCn7xO3vNisjaAoA==}
+  eslint-config-next@15.0.0-rc.0:
+    resolution: {integrity: sha512-c23lNAAt3oWQ9KtCzJvcApteCJgrntJHc/cgRNbBwrQ3ssx795CiV4hptdDQRmUm7y8VZV3yfrCRrnHMyQ4aOQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -1845,6 +1845,12 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+
+  eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514:
+    resolution: {integrity: sha512-nCZD93/KYY5hNAWGhfvvrEXvLFIXJCMu2St7ciHeiWUp/lnS2RVgWawp2kNQamr9Y23C9lUA03TmDRNgbm05vg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
 
   eslint-plugin-react-naming-convention@1.5.25:
     resolution: {integrity: sha512-ajFjjuLa20szKn0L8G98gfakzTyPnZ8B7ZwkzeAYvuV+BuxtFi6mDvw9/Gr4jfvZlP8Z2PRPiixNS32qkhcRwQ==}
@@ -4573,7 +4579,7 @@ snapshots:
 
   '@next/env@15.0.0-rc.0': {}
 
-  '@next/eslint-plugin-next@14.2.5':
+  '@next/eslint-plugin-next@15.0.0-rc.0':
     dependencies:
       glob: 10.3.10
 
@@ -4604,7 +4610,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@15.0.0-rc.0':
     optional: true
 
-  '@nirtamir2/eslint-config@0.0.2-beta.12(@eslint-react/eslint-plugin@1.5.25(eslint@9.7.0)(typescript@5.5.3))(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(@types/eslint@8.56.10)(@vue/compiler-sfc@3.4.31)(eslint-plugin-format@0.1.2(eslint@9.7.0))(eslint-plugin-react-hooks@4.6.2(eslint@9.7.0))(eslint-plugin-react-refresh@0.4.8(eslint@9.7.0))(eslint@9.7.0)(prettier-plugin-packagejson@2.5.0(prettier@3.3.3))(prettier-plugin-tailwindcss@0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(prettier@3.3.3))(svelte@4.2.18)(typescript@5.5.3)':
+  '@nirtamir2/eslint-config@0.0.2-beta.12(@eslint-react/eslint-plugin@1.5.25(eslint@9.7.0)(typescript@5.5.3))(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(@types/eslint@8.56.10)(@vue/compiler-sfc@3.4.31)(eslint-plugin-format@0.1.2(eslint@9.7.0))(eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514(eslint@9.7.0))(eslint-plugin-react-refresh@0.4.8(eslint@9.7.0))(eslint@9.7.0)(prettier-plugin-packagejson@2.5.0(prettier@3.3.3))(prettier-plugin-tailwindcss@0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(prettier@3.3.3))(svelte@4.2.18)(typescript@5.5.3)':
     dependencies:
       '@antfu/install-pkg': 0.3.3
       '@clack/prompts': 0.7.0
@@ -4662,7 +4668,7 @@ snapshots:
       '@eslint-react/eslint-plugin': 1.5.25(eslint@9.7.0)(typescript@5.5.3)
       '@trivago/prettier-plugin-sort-imports': 4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3)
       eslint-plugin-format: 0.1.2(eslint@9.7.0)
-      eslint-plugin-react-hooks: 4.6.2(eslint@9.7.0)
+      eslint-plugin-react-hooks: 5.1.0-beta-26f2496093-20240514(eslint@9.7.0)
       eslint-plugin-react-refresh: 0.4.8(eslint@9.7.0)
       prettier-plugin-packagejson: 2.5.0(prettier@3.3.3)
       prettier-plugin-tailwindcss: 0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(@vue/compiler-sfc@3.4.31)(prettier@3.3.3))(prettier@3.3.3)
@@ -5803,9 +5809,9 @@ snapshots:
       find-up: 7.0.0
       parse-gitignore: 2.0.0
 
-  eslint-config-next@14.2.5(eslint@9.7.0)(typescript@5.5.3):
+  eslint-config-next@15.0.0-rc.0(eslint@9.7.0)(typescript@5.5.3):
     dependencies:
-      '@next/eslint-plugin-next': 14.2.5
+      '@next/eslint-plugin-next': 15.0.0-rc.0
       '@rushstack/eslint-patch': 1.10.3
       '@typescript-eslint/parser': 7.2.0(eslint@9.7.0)(typescript@5.5.3)
       eslint: 9.7.0
@@ -6215,6 +6221,10 @@ snapshots:
       - supports-color
 
   eslint-plugin-react-hooks@4.6.2(eslint@9.7.0):
+    dependencies:
+      eslint: 9.7.0
+
+  eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514(eslint@9.7.0):
     dependencies:
       eslint: 9.7.0
 

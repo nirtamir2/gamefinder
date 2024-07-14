@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 export const mockData = [
   {
     slug: "grand-theft-auto-v",
@@ -2347,3 +2348,5 @@ export const mockData = [
     ],
   },
 ];
+
+/* eslint-enable sonarjs/no-duplicate-string */
