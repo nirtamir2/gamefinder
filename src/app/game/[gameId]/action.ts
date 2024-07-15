@@ -5,15 +5,26 @@ import { z } from "zod";
 const recommendationSchema = z
   .object({
     games: z
-      .array(z.string().describe("game name"))
+      .array(
+        z.object({
+          name: z.string().describe("game name"),
+          explanation: z
+            .string()
+            .describe("why did you choose to recommend this game"),
+        }),
+      )
       .describe("game recommendations"),
   })
   .describe("result");
 
 export const recommendGamesWithAI = async ({
+  genre,
+  platforms,
   likedGames,
 }: {
   likedGames: Array<string>;
+  platforms: Array<string>;
+  genre: string;
 }) => {
   "use server";
   const result = await generateObject({
@@ -22,8 +33,10 @@ export const recommendGamesWithAI = async ({
     temperature: 0,
     system:
       "You are a professional video game recommender. The user will provide you some games he liked. Find 8 games similar to the game mentioned that they might like and return their names.",
-    prompt: `${likedGames.join(", ")}`,
+    prompt: `Games i liked: ${likedGames.join(", ")}.
+Platform i use: ${platforms.join(", ")}
+My favorite genre: ${genre}`,
     schema: recommendationSchema,
   });
-  return { recommendedGames: result.object.games };
+  return result.object;
 };

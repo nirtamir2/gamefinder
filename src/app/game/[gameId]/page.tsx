@@ -8,7 +8,7 @@ export default async function GamePage(props: { params: { gameId: string } }) {
   const { params } = props;
   const { gameId } = params;
 
-  const games = await fetchGamesData(gameId);
+  const games = await fetchGamesData(decodeURIComponent(gameId));
 
   return (
     <main className="container min-h-screen">

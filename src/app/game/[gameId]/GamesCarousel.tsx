@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { FetchGameDataResult } from "@/app/game/[gameId]/fetchGamesData";
 import {
   Carousel,
   CarouselContent,
@@ -6,9 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/Carousel";
-import type { Result } from "@/lib/fetchGames";
 
-export function GamesCarousel(props: { games: Array<Result> }) {
+export function GamesCarousel(props: { games: FetchGameDataResult }) {
   const { games } = props;
 
   return (
@@ -21,8 +21,8 @@ export function GamesCarousel(props: { games: Array<Result> }) {
       <CarouselContent>
         {games.map((game) => (
           <CarouselItem key={game.id}>
-            <div key={game.name} className="relative size-full">
-              {game.background_image == null ? (
+            <div key={game.id} className="relative size-full">
+              {game.data.background_image == null ? (
                 <div className="size-full bg-background"></div>
               ) : (
                 <Image
@@ -32,30 +32,30 @@ export function GamesCarousel(props: { games: Array<Result> }) {
                     userSelect: "none",
                   }}
                   sizes="100vw"
-                  src={game.background_image}
+                  src={game.data.background_image}
                   alt=""
                 />
               )}
               <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
                 <div>
                   <div className="inline pb-4 pr-4 text-3xl font-semibold text-white">
-                    {game.name}
+                    {game.data.name}
                   </div>
                   <span className="rounded bg-green-500 p-1 text-xs text-black">
-                    {Math.round(game.rating * 20)}
+                    {Math.round(game.data.rating * 20)}
                   </span>
                 </div>
-                <div className="text-lg text-white">{game.slug}</div>
+                <div className="text-lg text-white">{game.data.slug}</div>
                 <div className="flex flex-wrap gap-4">
-                  {game.genres.map((genere) => {
+                  {game.data.genres.map((genre) => {
                     return (
-                      <div key={genere.id} className="text-lg text-white">
-                        {genere.name}
+                      <div key={genre.id} className="text-lg text-white">
+                        {genre.name}
                       </div>
                     );
                   })}
                 </div>
-                <div className="text-lg text-white">{game.released}</div>
+                <div className="text-lg text-white">{game.explanation}</div>
               </div>
             </div>
           </CarouselItem>
