@@ -4,6 +4,7 @@ import { fetchGames } from "@/lib/fetchGames";
 async function _fetchGamesData(gameId: string) {
   const aiRecommendationResult = await recommendGamesWithAI({
     likedGames: [gameId],
+    // TODO: use the url for that
     genre: "RPG",
     platforms: ["XBOX", "PC"],
   });
