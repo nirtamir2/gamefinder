@@ -16,13 +16,15 @@ async function _fetchGamesData(gameId: string) {
 
   return populatedGames.flatMap((games, index) => {
     const recommendedGame = aiRecommendationResult.games[index];
-    const gameData = games.results[0];
-    if (recommendedGame == null || gameData == null) {
+    const firstGameSearchResult = games.results[0];
+
+    if (recommendedGame == null || firstGameSearchResult == null) {
       return [];
     }
+
     return {
-      id: recommendedGame.name,
-      data: gameData,
+      id: firstGameSearchResult.slug,
+      data: firstGameSearchResult,
       explanation: recommendedGame.explanation,
     };
   });
