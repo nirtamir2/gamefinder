@@ -1,14 +1,26 @@
 import { recommendGamesWithAI } from "@/app/game/[gameId]/action";
+import { mockData } from "@/app/game/[gameId]/mock-data";
+import { env } from "@/env";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
 import { searchGames } from "@/lib/searchGames";
 
-export async function fetchGamesData(gameId: string) {
+export async function fetchGamesData({
+  likedGames,
+  genres,
+  platforms,
+}: {
+  likedGames: Array<string>;
+  genres: Array<string> | null;
+  platforms: Array<string> | null;
+}) {
+  if (!env.IS_REAL_DATA) {
+    return mockData;
+  }
   const aiRecommendationResult = await recommendGamesWithAI({
-    likedGames: [gameId],
-    // TODO: use the url for that
-    genre: "RPG",
-    platforms: ["XBOX", "PC"],
+    likedGames,
+    genres,
+    platforms,
   });
   const gamesSearchResults = await Promise.all(
     aiRecommendationResult.games.map((game) => {

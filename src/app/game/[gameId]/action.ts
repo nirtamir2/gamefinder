@@ -18,13 +18,13 @@ const recommendationSchema = z
   .describe("result");
 
 export const recommendGamesWithAI = async ({
-  genre,
+  genres,
   platforms,
   likedGames,
 }: {
   likedGames: Array<string>;
-  platforms: Array<string>;
-  genre: string;
+  platforms: Array<string> | null;
+  genres: Array<string> | null;
 }) => {
   "use server";
   const result = await generateObject({
@@ -33,9 +33,13 @@ export const recommendGamesWithAI = async ({
     temperature: 0,
     system:
       "You are a professional video game recommender. The user will provide you some games he liked. Find 8 games similar to the game mentioned that they might like and return their names.",
-    prompt: `Games i liked: ${likedGames.join(", ")}.
-Platform i use: ${platforms.join(", ")}
-My favorite genre: ${genre}`,
+    prompt: [
+      `Games i liked: ${likedGames.join(", ")}.`,
+      platforms == null ? null : `Platform i use: ${platforms.join(", ")}`,
+      genres == null ? null : `My favorite genres: ${genres.join(", ")}`,
+    ]
+      .filter((prompt) => prompt != null)
+      .join(" "),
     schema: recommendationSchema,
   });
   return result.object;

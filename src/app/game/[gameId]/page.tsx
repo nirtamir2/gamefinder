@@ -4,11 +4,30 @@ import { fetchGamesData as _fetchGamesData } from "@/app/game/[gameId]/fetchGame
 
 const fetchGamesData = cache(_fetchGamesData);
 
-export default async function GamePage(props: { params: { gameId: string } }) {
-  const { params } = props;
-  const { gameId } = params;
+export default async function GamePage(props: {
+  searchParams?: {
+    likedGames?: undefined | string | Array<string>;
+    genres?: undefined | string | Array<string>;
+    platforms?: undefined | string | Array<string>;
+  };
+}) {
+  const { searchParams } = props;
+  const likedGames =
+    searchParams?.likedGames == null ? [] : [searchParams.likedGames].flat();
+  const genres =
+    searchParams?.genres == null ? [] : [searchParams.genres].flat();
+  const platforms =
+    searchParams?.platforms == null ? [] : [searchParams.platforms].flat();
 
-  const games = await fetchGamesData(decodeURIComponent(gameId));
+  if (likedGames.length === 0) {
+    throw new Error("Game not set");
+  }
+
+  const games = await fetchGamesData({
+    likedGames,
+    genres,
+    platforms,
+  });
 
   return (
     <main className="container min-h-screen">
