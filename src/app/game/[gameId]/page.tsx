@@ -1,6 +1,7 @@
 import { cache } from "react";
-import { GamesCarousel } from "@/app/game/[gameId]/GamesCarousel";
 import { fetchGamesData as _fetchGamesData } from "@/app/game/[gameId]/fetchGamesData";
+import { GamesCarousel } from "@/components/GamesCarousel";
+import { ModifySearchDrawer } from "@/components/ModifySearchDrawer";
 
 const fetchGamesData = cache(_fetchGamesData);
 
@@ -31,6 +32,9 @@ export default async function GamePage(props: {
 
   return (
     <main className="container min-h-screen">
+      <div className="fixed left-0 top-0 z-10 w-full bg-gradient-to-b from-background to-transparent p-8">
+        <ModifySearchDrawer />
+      </div>
       <GamesCarousel games={games} />
     </main>
   );
