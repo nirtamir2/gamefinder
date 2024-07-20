@@ -1,20 +1,22 @@
 import { recommendGamesWithAI } from "@/app/game/[gameId]/action";
-import { fetchGames } from "@/lib/fetchGames";
+import { populateGameMovies } from "@/lib/populateGameMovies";
+import { populatedGame } from "@/lib/populatedGame";
+import { searchGames } from "@/lib/searchGames";
 
-async function _fetchGamesData(gameId: string) {
+export async function fetchGamesData(gameId: string) {
   const aiRecommendationResult = await recommendGamesWithAI({
     likedGames: [gameId],
     // TODO: use the url for that
     genre: "RPG",
     platforms: ["XBOX", "PC"],
   });
-  const populatedGames = await Promise.all(
+  const gamesSearchResults = await Promise.all(
     aiRecommendationResult.games.map((game) => {
-      return fetchGames(game.name);
+      return searchGames(game.name);
     }),
   );
 
-  return populatedGames.flatMap((games, index) => {
+  const searchedGames = gamesSearchResults.flatMap((games, index) => {
     const recommendedGame = aiRecommendationResult.games[index];
     const firstGameSearchResult = games.results[0];
 
@@ -24,14 +26,32 @@ async function _fetchGamesData(gameId: string) {
 
     return {
       id: firstGameSearchResult.slug,
-      data: firstGameSearchResult,
+      slug: firstGameSearchResult.slug,
+      searchData: firstGameSearchResult,
       explanation: recommendedGame.explanation,
     };
   });
-}
 
-export async function fetchGamesData(_gameId: string) {
-  return await _fetchGamesData(_gameId);
+  const gameSlugs = searchedGames.map((game) => game.slug);
+  const populatedGames = await Promise.all(
+    gameSlugs.map((slug) => populatedGame(slug)),
+  );
+  const populatedGameMovies = await Promise.all(
+    gameSlugs.map((slug) => populateGameMovies(slug)),
+  );
+
+  return searchedGames.flatMap((searchedGame, index) => {
+    const gameData = populatedGames[index];
+    const gameMovies = populatedGameMovies[index];
+    if (gameMovies == null || gameData == null) {
+      return [];
+    }
+    return {
+      ...searchedGame,
+      gameData,
+      gameMovies,
+    };
+  });
 }
 
 export type FetchGameDataResult = Awaited<ReturnType<typeof fetchGamesData>>;

@@ -1,6 +1,6 @@
 import { env } from "@/env";
 
-export interface Root {
+interface Root {
   count: number;
   next: string;
   previous: unknown;
@@ -8,7 +8,7 @@ export interface Root {
   user_platforms: boolean;
 }
 
-export interface Result {
+interface Result {
   slug: string;
   name: string;
   playtime: number;
@@ -42,34 +42,34 @@ export interface Result {
   community_rating?: number;
 }
 
-export interface Platform {
+interface Platform {
   platform: Platform2;
 }
 
-export interface Platform2 {
+interface Platform2 {
   id: number;
   name: string;
   slug: string;
 }
 
-export interface Store {
+interface Store {
   store: Store2;
 }
 
-export interface Store2 {
+interface Store2 {
   id: number;
   name: string;
   slug: string;
 }
 
-export interface Rating {
+interface Rating {
   id: number;
   title: string;
   count: number;
   percent: number;
 }
 
-export interface AddedByStatus {
+interface AddedByStatus {
   owned?: number;
   dropped?: number;
   beaten?: number;
@@ -78,7 +78,7 @@ export interface AddedByStatus {
   playing?: number;
 }
 
-export interface Tag {
+interface Tag {
   id: number;
   name: string;
   slug: string;
@@ -87,7 +87,7 @@ export interface Tag {
   image_background: string;
 }
 
-export interface EsrbRating {
+interface EsrbRating {
   id: number;
   name: string;
   slug: string;
@@ -95,28 +95,28 @@ export interface EsrbRating {
   name_ru: string;
 }
 
-export interface ShortScreenshot {
+interface ShortScreenshot {
   id: number;
   image: string;
 }
 
-export interface ParentPlatform {
+interface ParentPlatform {
   platform: Platform3;
 }
 
-export interface Platform3 {
+interface Platform3 {
   id: number;
   name: string;
   slug: string;
 }
 
-export interface Genre {
+interface Genre {
   id: number;
   name: string;
   slug: string;
 }
 
-export async function fetchGames(searchTerm: string) {
+export async function searchGames(searchTerm: string) {
   const response = await fetch(
     `https://api.rawg.io/api/games?search=${searchTerm}&key=${env.RAWG_API_KEY}`,
   );
