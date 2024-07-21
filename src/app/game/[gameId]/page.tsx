@@ -1,12 +1,10 @@
 import { cache } from "react";
-import { parseAsArrayOf, parseAsString } from "nuqs/server";
 import { fetchGamesData as _fetchGamesData } from "@/app/game/[gameId]/fetchGamesData";
 import { GamesCarousel } from "@/components/GamesCarousel";
 import { ModifySearchDrawer } from "@/components/ModifySearchDrawer";
+import { stringArraySchema } from "@/utils/stringArraySchema";
 
 const fetchGamesData = cache(_fetchGamesData);
-
-const stringArraySchema = parseAsArrayOf(parseAsString).withDefault([]);
 
 export default async function GamePage(props: {
   searchParams?: {

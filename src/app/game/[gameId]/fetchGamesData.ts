@@ -1,5 +1,5 @@
 import { recommendGamesWithAI } from "@/app/game/[gameId]/actions/recommendGamesWithAI.action";
-import { mockData } from "@/app/game/[gameId]/mock-data";
+import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
