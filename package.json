@@ -33,6 +33,7 @@
     "embla-carousel-react": "^8.1.6",
     "jiti": "^1.21.6",
     "next": "15.0.0-rc.0",
+    "nuqs": "^1.17.5",
     "react": "19.0.0-rc-85acf2d195-20240711",
     "react-dom": "19.0.0-rc-85acf2d195-20240711",
     "vaul": "^0.9.1",

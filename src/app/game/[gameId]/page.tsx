@@ -1,9 +1,12 @@
 import { cache } from "react";
+import { parseAsArrayOf, parseAsString } from "nuqs/server";
 import { fetchGamesData as _fetchGamesData } from "@/app/game/[gameId]/fetchGamesData";
 import { GamesCarousel } from "@/components/GamesCarousel";
 import { ModifySearchDrawer } from "@/components/ModifySearchDrawer";
 
 const fetchGamesData = cache(_fetchGamesData);
+
+const stringArraySchema = parseAsArrayOf(parseAsString).withDefault([]);
 
 export default async function GamePage(props: {
   searchParams?: {
@@ -13,12 +16,11 @@ export default async function GamePage(props: {
   };
 }) {
   const { searchParams } = props;
-  const likedGames =
-    searchParams?.likedGames == null ? [] : [searchParams.likedGames].flat();
-  const genres =
-    searchParams?.genres == null ? [] : [searchParams.genres].flat();
-  const platforms =
-    searchParams?.platforms == null ? [] : [searchParams.platforms].flat();
+  const likedGames = stringArraySchema.parseServerSide(
+    searchParams?.likedGames,
+  );
+  const genres = stringArraySchema.parseServerSide(searchParams?.genres);
+  const platforms = stringArraySchema.parseServerSide(searchParams?.platforms);
 
   if (likedGames.length === 0) {
     throw new Error("Game not set");
