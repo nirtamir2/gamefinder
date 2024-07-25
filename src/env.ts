@@ -6,7 +6,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     RAWG_API_KEY: z.string().min(1),
     GOOGLE_GENERATIVE_AI_API_KEY: z.string().min(1),
-    IS_REAL_DATA: z.coerce.boolean().default(false),
+    IS_MOCK_DATA: z.coerce.boolean().default(false),
     // ONLY_BOOLEAN: z
     // 	.string()
     // 	// only allow "true" or "false"
@@ -21,7 +21,7 @@ export const env = createEnv({
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    IS_REAL_DATA: process.env["IS_REAL_DATA"],
+    IS_MOCK_DATA: process.env["IS_MOCK_DATA"],
     GOOGLE_GENERATIVE_AI_API_KEY: process.env["GOOGLE_GENERATIVE_AI_API_KEY"],
     RAWG_API_KEY: process.env["RAWG_API_KEY"],
   },

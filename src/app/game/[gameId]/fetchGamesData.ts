@@ -1,5 +1,5 @@
 import "server-only";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { recommendGamesWithAI } from "@/app/game/[gameId]/actions/recommendGamesWithAI.action";
 import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
@@ -7,6 +7,41 @@ import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
 import { searchGames } from "@/lib/searchGames";
+
+async function fetchGameDataFromApi(gameSlug: string) {
+  const [populatedGameData, populatedGameMovies] = await Promise.all([
+    populatedGame(gameSlug),
+    populateGameMovies(gameSlug),
+  ]);
+  return { populatedGameData, populatedGameMovies };
+}
+
+async function fetchGameFromFirebase(gameSlug: string) {
+  return await getDoc(
+    doc(collection(firebaseFirestore, "fetched_games"), gameSlug),
+  );
+}
+
+function updateFirebaseFetchedGame(
+  gameSlug: string,
+  data: {
+    id: string;
+    slug: string;
+    gameData: Awaited<ReturnType<typeof populatedGame>>;
+    gameMovies: Awaited<ReturnType<typeof populateGameMovies>>;
+    searchData: NonNullable<
+      Awaited<ReturnType<typeof searchGames>>["results"][0]
+    >;
+  },
+) {
+  return setDoc(doc(firebaseFirestore, "fetched_games", gameSlug), data);
+}
+
+function createFirebaseCustomDataEntry(gameSlug: string) {
+  return setDoc(doc(firebaseFirestore, "custom_game_data", gameSlug), {
+    assets: [{ type: "video", src: "" }],
+  });
+}
 
 export async function fetchGamesData({
   likedGames,
@@ -17,7 +52,7 @@ export async function fetchGamesData({
   genres: Array<string> | null;
   platforms: Array<string> | null;
 }) {
-  if (!env.IS_REAL_DATA) {
+  if (env.IS_MOCK_DATA) {
     return mockData;
   }
   const aiRecommendationResult = await recommendGamesWithAI({
@@ -47,57 +82,45 @@ export async function fetchGamesData({
     };
   });
 
-  const gameSlugs = searchedGames.map((game) => game.slug);
-
-  const populatedGames = await Promise.all(
-    gameSlugs.map((slug) => populatedGame(slug)),
-  );
-  const populatedGameMovies = await Promise.all(
-    gameSlugs.map((slug) => populateGameMovies(slug)),
-  );
-
-  const result = searchedGames.flatMap((searchedGame, index) => {
-    const gameData = populatedGames[index];
-    const gameMovies = populatedGameMovies[index];
-    if (gameMovies == null || gameData == null) {
-      return [];
-    }
-    return {
-      ...searchedGame,
-      gameData,
-      gameMovies,
-    };
+  const gameSearches = searchedGames.map((game) => {
+    return { slug: game.slug, searchData: game.searchData };
   });
 
-  for (const fetchedGame of result) {
-    await setDoc(doc(firebaseFirestore, "fetched_games", fetchedGame.id), {
-      id: fetchedGame.id,
-      slug: fetchedGame.slug,
-      gameData: fetchedGame.gameData,
-      gameMovies: fetchedGame.gameMovies,
-      searchData: fetchedGame.searchData,
-    });
+  return await Promise.all(
+    gameSearches.map(async ({ slug, searchData }) => {
+      const fetchedGameDoc = await fetchGameFromFirebase(slug);
+      if (!fetchedGameDoc.exists()) {
+        const { populatedGameData, populatedGameMovies } =
+          await fetchGameDataFromApi(slug);
+        await Promise.all([
+          updateFirebaseFetchedGame(slug, {
+            id: slug,
+            slug,
+            gameData: populatedGameData,
+            gameMovies: populatedGameMovies,
+            searchData,
+          }),
+          createFirebaseCustomDataEntry(slug),
+        ]);
 
-    await setDoc(doc(firebaseFirestore, "custom_game_data", fetchedGame.id), {
-      assets: [
-        { type: "image", src: "" },
-        { type: "video", src: "" },
-      ],
-    });
-
-    // await addDoc(fetchedGamesCollectionRef, {
-    //   id: fetchedGame.id,
-    //   slug: fetchedGame.slug,
-    // });
-    //
-    // await addDoc(customGameDataCollectionRef, {
-    //   id: fetchedGame.id,
-    //   slug: fetchedGame.slug,
-    //   data: [{ imageSrc: "" }, { videoSrc: "" }],
-    // });
-  }
-
-  return result;
+        return {
+          ...searchData,
+          id: slug,
+          gameData: populatedGameData,
+          gameMovies: populatedGameMovies,
+        };
+      }
+      const data = fetchedGameDoc.data() as Awaited<
+        Parameters<typeof updateFirebaseFetchedGame>[1]
+      >;
+      return {
+        ...searchData,
+        id: slug,
+        gameData: data.gameData,
+        gameMovies: data.gameMovies,
+      };
+    }),
+  );
 }
 
 export type FetchGameDataResult = Awaited<ReturnType<typeof fetchGamesData>>;
