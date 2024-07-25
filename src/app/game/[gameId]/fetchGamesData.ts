@@ -1,5 +1,12 @@
 import "server-only";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  increment,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { recommendGamesWithAI } from "@/app/game/[gameId]/actions/recommendGamesWithAI.action";
 import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
@@ -40,6 +47,17 @@ function updateFirebaseFetchedGame(
 function createFirebaseCustomDataEntry(gameSlug: string) {
   return setDoc(doc(firebaseFirestore, "custom_game_data", gameSlug), {
     assets: [{ type: "video", src: "" }],
+  });
+}
+
+function updateFirebaseFetchGameCount(gameSlug: string) {
+  return updateDoc(doc(firebaseFirestore, "retrieved_game_count", gameSlug), {
+    count: increment(1),
+  });
+}
+function initFirebaseFetchGameCount(gameSlug: string) {
+  return setDoc(doc(firebaseFirestore, "retrieved_game_count", gameSlug), {
+    count: 0,
   });
 }
 
@@ -103,6 +121,8 @@ export async function fetchGamesData({
           createFirebaseCustomDataEntry(slug),
         ]);
 
+        await initFirebaseFetchGameCount(slug);
+
         return {
           ...searchData,
           id: slug,
@@ -110,6 +130,9 @@ export async function fetchGamesData({
           gameMovies: populatedGameMovies,
         };
       }
+
+      await updateFirebaseFetchGameCount(slug);
+
       const data = fetchedGameDoc.data() as Awaited<
         Parameters<typeof updateFirebaseFetchedGame>[1]
       >;
