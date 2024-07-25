@@ -35,13 +35,32 @@ export function initFirebaseFetchGameCount(gameSlug: string) {
   );
 }
 
+type FirebaseCustomGameDataResult = {
+  assets: Array<{ type: "video" | "image"; src: string }>;
+};
+
 export function createFirebaseCustomDataEntry(gameSlug: string) {
+  const data: FirebaseCustomGameDataResult = {
+    assets: [{ type: "video", src: "" }],
+  };
   return setDoc(
     doc(firebaseFirestore, firestoreCollection.custom_game_data, gameSlug),
-    {
-      assets: [{ type: "video", src: "" }],
-    },
+    data,
   );
+}
+
+export async function getFirebaseCustomDataEntry(gameSlug: string) {
+  const customGameData = await getDoc(
+    doc(
+      collection(firebaseFirestore, firestoreCollection.custom_game_data),
+      gameSlug,
+    ),
+  );
+
+  if (customGameData.exists()) {
+    return customGameData.data() as FirebaseCustomGameDataResult;
+  }
+  return null;
 }
 
 export async function fetchGameFromFirebase(gameSlug: string) {

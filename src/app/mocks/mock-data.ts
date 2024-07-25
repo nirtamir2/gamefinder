@@ -3,6 +3,7 @@ export const mockData = [
   {
     id: "the-witcher-3-wild-hunt",
     slug: "the-witcher-3-wild-hunt",
+    customGameData: null,
     searchData: {
       slug: "the-witcher-3-wild-hunt",
       name: "The Witcher 3: Wild Hunt",
@@ -993,6 +994,7 @@ export const mockData = [
   {
     id: "red-dead-redemption-2",
     slug: "red-dead-redemption-2",
+    customGameData: null,
     searchData: {
       slug: "red-dead-redemption-2",
       name: "Red Dead Redemption 2",
@@ -2129,6 +2131,7 @@ export const mockData = [
   {
     id: "the-elder-scrolls-v-skyrim",
     slug: "the-elder-scrolls-v-skyrim",
+    customGameData: null,
     searchData: {
       slug: "the-elder-scrolls-v-skyrim",
       name: "The Elder Scrolls V: Skyrim",
@@ -3198,6 +3201,7 @@ export const mockData = [
   {
     id: "fallout-4",
     slug: "fallout-4",
+    customGameData: null,
     searchData: {
       slug: "fallout-4",
       name: "Fallout 4",
@@ -4072,6 +4076,7 @@ export const mockData = [
   {
     id: "elden-ring",
     slug: "elden-ring",
+    customGameData: null,
     searchData: {
       slug: "elden-ring",
       name: "Elden Ring",
@@ -5067,6 +5072,7 @@ export const mockData = [
   {
     id: "ghost-of-tsushima",
     slug: "ghost-of-tsushima",
+    customGameData: null,
     searchData: {
       slug: "ghost-of-tsushima",
       name: "Ghost of Tsushima",
@@ -5538,6 +5544,7 @@ export const mockData = [
   {
     id: "kingdom-come-deliverance",
     slug: "kingdom-come-deliverance",
+    customGameData: null,
     searchData: {
       slug: "kingdom-come-deliverance",
       name: "Kingdom Come: Deliverance",
@@ -6518,6 +6525,7 @@ export const mockData = [
   {
     id: "horizon-zero-dawn",
     slug: "horizon-zero-dawn",
+    customGameData: null,
     searchData: {
       slug: "horizon-zero-dawn",
       name: "Horizon Zero Dawn",

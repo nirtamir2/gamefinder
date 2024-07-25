@@ -5,6 +5,7 @@ import { env } from "@/env";
 import {
   createFirebaseCustomDataEntry,
   fetchGameFromFirebase,
+  getFirebaseCustomDataEntry,
   initFirebaseFetchGameCount,
   updateFirebaseFetchGameCount,
   updateFirebaseFetchedGame,
@@ -88,6 +89,7 @@ export async function fetchGamesData({
           id: slug,
           gameData: populatedGameData,
           gameMovies: populatedGameMovies,
+          customGameData: null,
         };
       }
 
@@ -96,11 +98,13 @@ export async function fetchGamesData({
       const data = fetchedGameDoc.data() as Awaited<
         Parameters<typeof updateFirebaseFetchedGame>[1]
       >;
+      const customGameData = await getFirebaseCustomDataEntry(slug);
       return {
         ...searchData,
         id: slug,
         gameData: data.gameData,
         gameMovies: data.gameMovies,
+        customGameData,
       };
     }),
   );
