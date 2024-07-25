@@ -1,14 +1,14 @@
 import "server-only";
 import { recommendGamesWithAI } from "@/app/game/[gameId]/actions/recommendGamesWithAI.action";
+import { mockData } from "@/app/mocks/mock-data";
+import { env } from "@/env";
 import {
   createFirebaseCustomDataEntry,
   fetchGameFromFirebase,
   initFirebaseFetchGameCount,
   updateFirebaseFetchGameCount,
   updateFirebaseFetchedGame,
-} from "@/app/game/[gameId]/firebaseFirestoreFunctions";
-import { mockData } from "@/app/mocks/mock-data";
-import { env } from "@/env";
+} from "@/firebase/firebaseFirestoreFunctions";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
 import { searchGames } from "@/lib/searchGames";
