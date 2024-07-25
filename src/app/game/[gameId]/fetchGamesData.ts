@@ -1,6 +1,9 @@
+import "server-only";
+import { doc, setDoc } from "firebase/firestore";
 import { recommendGamesWithAI } from "@/app/game/[gameId]/actions/recommendGamesWithAI.action";
 import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
+import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
 import { searchGames } from "@/lib/searchGames";
@@ -45,6 +48,7 @@ export async function fetchGamesData({
   });
 
   const gameSlugs = searchedGames.map((game) => game.slug);
+
   const populatedGames = await Promise.all(
     gameSlugs.map((slug) => populatedGame(slug)),
   );
@@ -52,7 +56,7 @@ export async function fetchGamesData({
     gameSlugs.map((slug) => populateGameMovies(slug)),
   );
 
-  return searchedGames.flatMap((searchedGame, index) => {
+  const result = searchedGames.flatMap((searchedGame, index) => {
     const gameData = populatedGames[index];
     const gameMovies = populatedGameMovies[index];
     if (gameMovies == null || gameData == null) {
@@ -64,6 +68,36 @@ export async function fetchGamesData({
       gameMovies,
     };
   });
+
+  for (const fetchedGame of result) {
+    await setDoc(doc(firebaseFirestore, "fetched_games", fetchedGame.id), {
+      id: fetchedGame.id,
+      slug: fetchedGame.slug,
+      gameData: fetchedGame.gameData,
+      gameMovies: fetchedGame.gameMovies,
+      searchData: fetchedGame.searchData,
+    });
+
+    await setDoc(doc(firebaseFirestore, "custom_game_data", fetchedGame.id), {
+      assets: [
+        { type: "image", src: "" },
+        { type: "video", src: "" },
+      ],
+    });
+
+    // await addDoc(fetchedGamesCollectionRef, {
+    //   id: fetchedGame.id,
+    //   slug: fetchedGame.slug,
+    // });
+    //
+    // await addDoc(customGameDataCollectionRef, {
+    //   id: fetchedGame.id,
+    //   slug: fetchedGame.slug,
+    //   data: [{ imageSrc: "" }, { videoSrc: "" }],
+    // });
+  }
+
+  return result;
 }
 
 export type FetchGameDataResult = Awaited<ReturnType<typeof fetchGamesData>>;
