@@ -17,7 +17,6 @@ export async function fetchGamesData({
   if (!env.IS_REAL_DATA) {
     return mockData;
   }
-
   const aiRecommendationResult = await recommendGamesWithAI({
     likedGames,
     genres,

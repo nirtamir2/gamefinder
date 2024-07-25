@@ -6,7 +6,6 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     RAWG_API_KEY: z.string().min(1),
     GOOGLE_GENERATIVE_AI_API_KEY: z.string().min(1),
-    DRIZZLE_DATABASE_URL: z.string().min(1),
     IS_REAL_DATA: z.coerce.boolean().default(false),
     // ONLY_BOOLEAN: z
     // 	.string()
@@ -25,7 +24,6 @@ export const env = createEnv({
     IS_REAL_DATA: process.env["IS_REAL_DATA"],
     GOOGLE_GENERATIVE_AI_API_KEY: process.env["GOOGLE_GENERATIVE_AI_API_KEY"],
     RAWG_API_KEY: process.env["RAWG_API_KEY"],
-    DRIZZLE_DATABASE_URL: process.env["DRIZZLE_DATABASE_URL"],
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   // experimental__runtimeEnv: {
