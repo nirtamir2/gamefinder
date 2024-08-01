@@ -10,7 +10,9 @@ const recommendationSchema = z
           name: z.string().describe("game name"),
           explanation: z
             .string()
-            .describe("why did you choose to recommend this game"),
+            .describe(
+              "why did you choose to recommend this game to me (use up to 25 words, second person)",
+            ),
         }),
       )
       .describe("game recommendations"),
@@ -34,7 +36,7 @@ export const recommendGamesWithAI = async ({
     system:
       "You are a professional video game recommender. The user will provide you some games he liked. Find 8 games similar to the game mentioned that they might like and return their names.",
     prompt: [
-      `Games i liked: ${likedGames.join(", ")}.`,
+      `Games I liked: ${likedGames.join(", ")}.`,
       platforms == null ? null : `Platform i use: ${platforms.join(", ")}`,
       genres == null ? null : `My favorite genres: ${genres.join(", ")}`,
     ]

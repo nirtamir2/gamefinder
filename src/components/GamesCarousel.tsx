@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { FetchGameDataResult } from "@/app/game/[gameId]/fetchGamesData";
+import { HorizontalGameCarousel } from "@/components/HorizontalGameCarousel";
 import {
   Carousel,
   CarouselContent,
@@ -20,46 +20,13 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
     >
       <CarouselContent>
         {games.map((game) => {
-          const fullImage =
-            game.gameData.background_image == null ? (
-              <div className="size-full bg-background"></div>
-            ) : (
-              <Image
-                fill
-                style={{
-                  objectFit: "cover",
-                  userSelect: "none",
-                }}
-                sizes="100vw"
-                src={game.gameData.background_image}
-                alt=""
-              />
-            );
-          const fullVideo =
-            game.gameMovies.results[0] == null ||
-            game.gameMovies.results[0].data.max == null ? (
-              fullImage
-            ) : (
-              // TODO: play when in view
-              <video
-                playsInline
-                autoPlay
-                muted
-                loop
-                preload="auto"
-                className="h-full object-cover"
-              >
-                <source
-                  src={game.gameMovies.results[0].data.max}
-                  type="video/mp4"
-                />
-                {fullImage}
-              </video>
-            );
           return (
             <CarouselItem key={game.id}>
               <div key={game.id} className="relative size-full">
-                {fullVideo}
+                <HorizontalGameCarousel
+                  game={game}
+                  customGameData={game.customGameData}
+                />
                 <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
                   <div>
                     <div className="inline pb-4 pr-4 text-3xl font-semibold text-white">

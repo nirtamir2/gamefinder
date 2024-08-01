@@ -35,13 +35,13 @@ export function initFirebaseFetchGameCount(gameSlug: string) {
   );
 }
 
-type FirebaseCustomGameDataResult = {
+export type FirebaseCustomGameDataResult = {
   assets: Array<{ type: "video" | "image"; src: string }>;
 };
 
 export function createFirebaseCustomDataEntry(gameSlug: string) {
   const data: FirebaseCustomGameDataResult = {
-    assets: [{ type: "video", src: "" }],
+    assets: [],
   };
   return setDoc(
     doc(firebaseFirestore, firestoreCollection.custom_game_data, gameSlug),
