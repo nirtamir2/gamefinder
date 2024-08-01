@@ -62,11 +62,15 @@ export async function fetchGamesData({
   });
 
   const gameSearches = searchedGames.map((game) => {
-    return { slug: game.slug, searchData: game.searchData };
+    return {
+      slug: game.slug,
+      searchData: game.searchData,
+      explanation: game.explanation,
+    };
   });
 
   return await Promise.all(
-    gameSearches.map(async ({ slug, searchData }) => {
+    gameSearches.map(async ({ slug, searchData, explanation }) => {
       const fetchedGameDoc = await fetchGameFromFirebase(slug);
       if (!fetchedGameDoc.exists()) {
         const { populatedGameData, populatedGameMovies } =
@@ -87,6 +91,7 @@ export async function fetchGamesData({
         return {
           ...searchData,
           id: slug,
+          explanation,
           gameData: populatedGameData,
           gameMovies: populatedGameMovies,
           customGameData: null,
@@ -102,6 +107,7 @@ export async function fetchGamesData({
       return {
         ...searchData,
         id: slug,
+        explanation,
         gameData: data.gameData,
         gameMovies: data.gameMovies,
         customGameData,
