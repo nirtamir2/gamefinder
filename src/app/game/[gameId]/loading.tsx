@@ -1,9 +1,12 @@
 import { Loader } from "@/components/ui/Loader/Loader";
 
-export default function Loading() {
+export default function LoadingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <Loader />
+      <div className="relative -top-8 animate-pulse text-balance px-16 text-white opacity-30">
+        Building your feed...
+      </div>
     </div>
   );
 }
