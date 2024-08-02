@@ -1,6 +1,10 @@
 import type { FetchGameDataResult } from "@/app/game/[gameId]/fetchGamesData";
 import { HorizontalGameCarousel } from "@/components/HorizontalGameCarousel";
 import {
+  PlatformIcon,
+  getUnifiedPlatformName,
+} from "@/components/PlatformIcon";
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -20,6 +24,13 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
     >
       <CarouselContent>
         {games.map((game) => {
+          const uniqPlatformNames = [
+            ...new Set(
+              game.gameData.platforms.map((platform) =>
+                getUnifiedPlatformName(platform.platform.slug),
+              ),
+            ),
+          ].filter((platformName) => platformName != null);
           return (
             <CarouselItem key={game.id}>
               <div key={game.id} className="relative size-full">
@@ -39,6 +50,15 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   <div className="pt-2 text-lg text-white">
                     {game.explanation}
                   </div>
+                  <ul className="flex flex-wrap gap-2">
+                    {uniqPlatformNames.map((platformName) => {
+                      return (
+                        <li key={platformName}>
+                          <PlatformIcon platform={platformName} />
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
               </div>
             </CarouselItem>

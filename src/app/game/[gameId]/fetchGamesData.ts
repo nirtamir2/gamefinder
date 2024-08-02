@@ -39,27 +39,29 @@ export async function fetchGamesData({
     genres,
     platforms,
   });
-  const gamesSearchResults = await Promise.all(
+  const gamesSearchResults = await Promise.allSettled(
     aiRecommendationResult.games.map((game) => {
       return searchGames(game.name);
     }),
   );
 
-  const searchedGames = gamesSearchResults.flatMap((games, index) => {
-    const recommendedGame = aiRecommendationResult.games[index];
-    const firstGameSearchResult = games.results[0];
+  const searchedGames = gamesSearchResults
+    .flatMap((a) => (a.status === "fulfilled" ? a.value : []))
+    .flatMap((games, index) => {
+      const recommendedGame = aiRecommendationResult.games[index];
+      const firstGameSearchResult = games.results[0];
 
-    if (recommendedGame == null || firstGameSearchResult == null) {
-      return [];
-    }
+      if (recommendedGame == null || firstGameSearchResult == null) {
+        return [];
+      }
 
-    return {
-      id: firstGameSearchResult.slug,
-      slug: firstGameSearchResult.slug,
-      searchData: firstGameSearchResult,
-      explanation: recommendedGame.explanation,
-    };
-  });
+      return {
+        id: firstGameSearchResult.slug,
+        slug: firstGameSearchResult.slug,
+        searchData: firstGameSearchResult,
+        explanation: recommendedGame.explanation,
+      };
+    });
 
   const gameSearches = searchedGames.map((game) => {
     return {

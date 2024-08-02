@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
 import cubeImageSrc from "../components/assets/cube.png";
-import gemeniIconSrc from "../components/assets/gemimi.svg";
+import gemeniIconSrc from "../components/assets/icons/gemimi.svg";
 
 export default async function Home() {
   return (
