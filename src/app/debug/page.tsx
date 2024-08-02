@@ -8,10 +8,15 @@ const exampleAsset = [
   { type: "video", src: "" },
 ];
 
-export default async function DebugGamesPage() {
-  const customGameData = await getDocs(
-    collection(firebaseFirestore, firestoreCollection.custom_game_data),
-  );
+async function fetchDebugData() {
+  const [customGameData, retrievedGameCountData] = await Promise.all([
+    getDocs(
+      collection(firebaseFirestore, firestoreCollection.custom_game_data),
+    ),
+    getDocs(
+      collection(firebaseFirestore, firestoreCollection.retrieved_game_count),
+    ),
+  ]);
 
   const customGameDataDocs = Object.assign(
     {},
@@ -20,10 +25,6 @@ export default async function DebugGamesPage() {
         [a.id]: a.data() as FirebaseCustomGameDataResult,
       };
     }),
-  );
-
-  const retrievedGameCountData = await getDocs(
-    collection(firebaseFirestore, firestoreCollection.retrieved_game_count),
   );
 
   const retrievedGameCountDataDocs: Record<string, number> = Object.assign(
@@ -35,7 +36,7 @@ export default async function DebugGamesPage() {
     }),
   );
 
-  const finalData = Object.entries(retrievedGameCountDataDocs)
+  return Object.entries(retrievedGameCountDataDocs)
     .map(([key, count]) => {
       return {
         key,
@@ -45,6 +46,10 @@ export default async function DebugGamesPage() {
     })
     .filter((a) => a.assets.length === 0)
     .toSorted((a, b) => (a.count > b.count ? -1 : a.count === b.count ? 0 : 1));
+}
+
+export default async function DebugGamesPage() {
+  const finalData = await fetchDebugData();
 
   return (
     <main>
