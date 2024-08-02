@@ -11,7 +11,7 @@ const searchParamsSchemaSerializer = createSerializer({
   platforms: stringArraySchema,
 });
 
-export async function navigateToSearchResult(_: unknown, data: FormData) {
+export async function navigateToSearchResult(data: FormData) {
   const likedGames = String(data.get("likedGames"));
   const genres = String(data.get("genres"));
   const platforms = String(data.get("platforms"));

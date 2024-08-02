@@ -31,7 +31,7 @@ export default async function GamePage(props: {
   });
 
   return (
-    <main className="container min-h-screen">
+    <main className="container min-h-dvh">
       <div className="fixed left-0 top-0 z-10 w-full bg-gradient-to-b from-background to-transparent p-8">
         <ModifySearchDrawer />
       </div>

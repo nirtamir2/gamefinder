@@ -1,6 +1,7 @@
 "use client";
 
 import { navigateToSearchResult } from "@/app/game/[gameId]/actions/navigateToSearchResult.action";
+import { Button } from "@/components/ui/Button";
 
 export function UpdateSearchParamsForm() {
   return (
@@ -13,9 +14,9 @@ export function UpdateSearchParamsForm() {
       <label htmlFor="platforms">Platforms</label>
       <input id="platforms" type="text" name="platforms" />
       <label htmlFor="likedGames">Liked games</label>
-      <input id="likedGames" type="text" name="likedGames" />
+      <input required id="likedGames" type="text" name="likedGames" />
       <div>
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   );

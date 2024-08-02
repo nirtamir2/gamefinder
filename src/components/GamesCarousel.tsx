@@ -29,24 +29,16 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                 />
                 <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
                   <div>
-                    <div className="inline pb-4 pr-4 text-3xl font-semibold text-white">
+                    <span className="inline pb-4 pr-4 text-2xl font-semibold text-white">
                       {game.gameData.name}
-                    </div>
-                    <span className="rounded bg-green-500 p-1 text-xs text-black">
+                    </span>
+                    <span className="inline rounded-md bg-green-500 px-2.5 py-1 align-text-top text-sm font-bold text-black">
                       {Math.round(game.gameData.rating * 20)}
                     </span>
                   </div>
-                  <div className="text-lg text-white">{game.gameData.slug}</div>
-                  <div className="flex flex-wrap gap-4">
-                    {game.gameData.genres.map((genre) => {
-                      return (
-                        <div key={genre.id} className="text-lg text-white">
-                          {genre.name}
-                        </div>
-                      );
-                    })}
+                  <div className="pt-2 text-lg text-white">
+                    {game.explanation}
                   </div>
-                  <div className="text-lg text-white">{game.explanation}</div>
                 </div>
               </div>
             </CarouselItem>

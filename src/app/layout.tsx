@@ -5,7 +5,7 @@ import "./globals.css";
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "Gamefinder",
+  title: "gameplays.io",
   description: "Find your games using AI",
 };
 

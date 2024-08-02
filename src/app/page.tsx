@@ -5,7 +5,7 @@ import gemeniIconSrc from "../components/assets/gemimi.svg";
 
 export default async function Home() {
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex h-dvh w-full">
       <div className="flex w-full flex-col items-center justify-center">
         <Image src={cubeImageSrc} height={278} width={278} alt="" />
         <div className="relative -top-8 flex flex-col">
