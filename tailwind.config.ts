@@ -18,6 +18,8 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           faded: "hsl(var(--primary-faded))",
+          focus: "hsl(var(--primary-focus))",
+          hover: "hsl(var(--primary-hover))",
         },
         transparent: "transparent",
         background: "hsl(var(--background))",
