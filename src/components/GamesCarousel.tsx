@@ -50,7 +50,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   <div className="pt-2 text-lg text-white">
                     {game.explanation}
                   </div>
-                  <ul className="flex flex-wrap gap-2">
+                  <ul className="flex flex-wrap items-center gap-2">
                     {uniqPlatformNames.map((platformName) => {
                       return (
                         <li key={platformName}>

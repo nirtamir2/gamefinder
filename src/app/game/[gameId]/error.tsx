@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import cubeImageSrc from "@/components/assets/cube.png";
+import cubeImageSrc from "@/assets/cube.png";
 import { Button } from "@/components/ui/Button";
 
 export default function ErrorPage({
