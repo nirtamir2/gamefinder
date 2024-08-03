@@ -7,15 +7,15 @@ const recommendationSchema = z
     games: z
       .array(
         z.object({
-          name: z.string().describe("game name"),
+          name: z.string().describe("discover name"),
           explanation: z
             .string()
             .describe(
-              "why did you choose to recommend this game to me (use up to 25 words, second person)",
+              "why did you choose to recommend this discover to me (use up to 25 words, second person)",
             ),
         }),
       )
-      .describe("game recommendations"),
+      .describe("discover recommendations"),
   })
   .describe("result");
 
@@ -34,7 +34,7 @@ export const recommendGamesWithAI = async ({
     model: google("models/gemini-1.5-flash-latest"),
     temperature: 0,
     system:
-      "You are a professional video game recommender. The user will provide you some games he liked. Find 8 games similar to the game mentioned that they might like and return their names.",
+      "You are a professional video discover recommender. The user will provide you some games he liked. Find 8 games similar to the discover mentioned that they might like and return their names.",
     prompt: [
       `Games I liked: ${likedGames.join(", ")}.`,
       platforms == null ? null : `Platform i use: ${platforms.join(", ")}`,

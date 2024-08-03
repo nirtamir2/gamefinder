@@ -9,7 +9,7 @@ declare module "@@@next-static-paths" {
   interface Paths {
   "/": Record<never, never>,
   "/debug": Record<never, never>,
-  "/game": Record<never, never>,
+  "/discover": Record<never, never>,
   "/loading": Record<never, never>
   }
 }

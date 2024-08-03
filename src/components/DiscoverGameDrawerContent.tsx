@@ -19,6 +19,8 @@ export function DiscoverGameDrawerContent() {
     platformFromQueryState,
   );
 
+  const [likedGames, setLikedGames] = useState("");
+
   if (formType === "choosePlatformForm") {
     return (
       <SelectPlatform
@@ -33,8 +35,10 @@ export function DiscoverGameDrawerContent() {
   if (formType === "mainForm") {
     return (
       <UpdateSearchParamsForm
+        likedGames={likedGames}
         platforms={currentPlatforms}
         onClickPlatforms={() => setFormType("choosePlatformForm")}
+        onChangeLikedGames={(likedGames) => setLikedGames(likedGames)}
       />
     );
   }

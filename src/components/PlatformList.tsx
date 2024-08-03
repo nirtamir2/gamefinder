@@ -1,4 +1,4 @@
-import type { FetchGameDataResult } from "@/app/game/fetchGamesData";
+import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
 import { PlatformIcon } from "@/components/PlatformIcon";
 import { getUnifiedPlatformName } from "@/components/getUnifiedPlatformName";
 

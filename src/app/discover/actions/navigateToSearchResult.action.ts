@@ -22,7 +22,7 @@ export async function navigateToSearchResult(data: FormData) {
     platforms: stringArraySchema.parseServerSide(platforms),
   });
 
-  const url = `${pathFor("/game")}${searchParams}`;
+  const url = `${pathFor("/discover")}${searchParams}`;
 
   redirect(url);
 }

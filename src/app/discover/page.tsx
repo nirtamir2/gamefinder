@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { fetchGamesData as _fetchGamesData } from "@/app/game/fetchGamesData";
+import { fetchGamesData as _fetchGamesData } from "@/app/discover/fetchGamesData";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
 import { GamesCarousel } from "@/components/GamesCarousel";
 import { stringArraySchema } from "@/utils/stringArraySchema";

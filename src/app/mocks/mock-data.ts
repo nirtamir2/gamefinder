@@ -493,7 +493,7 @@ export const mockData = [
       name: "The Witcher 3: Wild Hunt",
       name_original: "The Witcher 3: Wild Hunt",
       description:
-        "<p>The third game in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.</p>\n<p>CD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base game they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.</p>\n<p>Players praise the game for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the game deserved numerous awards for every aspect of the game, from music to direction.</p>",
+        "<p>The third discover in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.</p>\n<p>CD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base discover they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.</p>\n<p>Players praise the discover for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the discover deserved numerous awards for every aspect of the discover, from music to direction.</p>",
       metacritic: 92,
       metacritic_platforms: [
         {
@@ -987,7 +987,7 @@ export const mockData = [
       esrb_rating: { id: 4, name: "Mature", slug: "mature" },
       clip: null,
       description_raw:
-        "The third game in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.\n\nCD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base game they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.\n\nPlayers praise the game for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the game deserved numerous awards for every aspect of the game, from music to direction.",
+        "The third discover in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.\n\nCD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base discover they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.\n\nPlayers praise the discover for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the discover deserved numerous awards for every aspect of the discover, from music to direction.",
     },
     gameMovies: { count: 0, next: null, previous: null, results: [] },
   },
@@ -2656,7 +2656,7 @@ export const mockData = [
       name: "The Elder Scrolls V: Skyrim",
       name_original: "The Elder Scrolls V: Skyrim",
       description:
-        "<p>The fifth game in the series, Skyrim takes us on a journey through the coldest region of Cyrodiil. Once again player can traverse the open world RPG armed with various medieval weapons and magic, to become a hero of Nordic legends –Dovahkiin, the Dragonborn. After mandatory character creation players will have to escape not only imprisonment but a fire-breathing dragon. Something Skyrim hasn’t seen in centuries.</p>",
+        "<p>The fifth discover in the series, Skyrim takes us on a journey through the coldest region of Cyrodiil. Once again player can traverse the open world RPG armed with various medieval weapons and magic, to become a hero of Nordic legends –Dovahkiin, the Dragonborn. After mandatory character creation players will have to escape not only imprisonment but a fire-breathing dragon. Something Skyrim hasn’t seen in centuries.</p>",
       metacritic: 94,
       metacritic_platforms: [
         {
@@ -2939,7 +2939,7 @@ export const mockData = [
         {
           id: 4207,
           name: "Bethesda Game Studios",
-          slug: "bethesda-game-studios",
+          slug: "bethesda-discover-studios",
           games_count: 39,
           image_background:
             "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
@@ -3194,7 +3194,7 @@ export const mockData = [
       esrb_rating: { id: 4, name: "Mature", slug: "mature" },
       clip: null,
       description_raw:
-        "The fifth game in the series, Skyrim takes us on a journey through the coldest region of Cyrodiil. Once again player can traverse the open world RPG armed with various medieval weapons and magic, to become a hero of Nordic legends –Dovahkiin, the Dragonborn. After mandatory character creation players will have to escape not only imprisonment but a fire-breathing dragon. Something Skyrim hasn’t seen in centuries.",
+        "The fifth discover in the series, Skyrim takes us on a journey through the coldest region of Cyrodiil. Once again player can traverse the open world RPG armed with various medieval weapons and magic, to become a hero of Nordic legends –Dovahkiin, the Dragonborn. After mandatory character creation players will have to escape not only imprisonment but a fire-breathing dragon. Something Skyrim hasn’t seen in centuries.",
     },
     gameMovies: { count: 0, next: null, previous: null, results: [] },
   },
@@ -3671,7 +3671,7 @@ export const mockData = [
       name: "Fallout 4",
       name_original: "Fallout 4",
       description:
-        "<p>The fourth game in the post-apocalyptic action RPG series from Bethesda studious brings players back to the retro-future. After customizing the facial features of the character, players will be admitted to the Vault 111 with their family, and tricked into entering the cryogenic capsule. After the rude awakening after the unknown amount of time has passed, the child is separated from the parents and the loving partner is killed in front of them – the main quest is settled. Now there’s only the giant open world to explore. Fallout 4 introduces the mechanics of settlement building, where players can build their own little town. Gathering material for crafting and building brings more “survival” elements into the old formula. Within their own settlements, players will be able to build all needed utilities, from storage spaces to power armor stations. Visual upgrade from the previous game brings life to what used to be brown wastelands, now filled with details and color.</p>",
+        "<p>The fourth discover in the post-apocalyptic action RPG series from Bethesda studious brings players back to the retro-future. After customizing the facial features of the character, players will be admitted to the Vault 111 with their family, and tricked into entering the cryogenic capsule. After the rude awakening after the unknown amount of time has passed, the child is separated from the parents and the loving partner is killed in front of them – the main quest is settled. Now there’s only the giant open world to explore. Fallout 4 introduces the mechanics of settlement building, where players can build their own little town. Gathering material for crafting and building brings more “survival” elements into the old formula. Within their own settlements, players will be able to build all needed utilities, from storage spaces to power armor stations. Visual upgrade from the previous discover brings life to what used to be brown wastelands, now filled with details and color.</p>",
       metacritic: 84,
       metacritic_platforms: [],
       released: "2015-11-09",
@@ -3859,7 +3859,7 @@ export const mockData = [
         {
           id: 4207,
           name: "Bethesda Game Studios",
-          slug: "bethesda-game-studios",
+          slug: "bethesda-discover-studios",
           games_count: 39,
           image_background:
             "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
@@ -4069,7 +4069,7 @@ export const mockData = [
       esrb_rating: { id: 4, name: "Mature", slug: "mature" },
       clip: null,
       description_raw:
-        "The fourth game in the post-apocalyptic action RPG series from Bethesda studious brings players back to the retro-future. After customizing the facial features of the character, players will be admitted to the Vault 111 with their family, and tricked into entering the cryogenic capsule. After the rude awakening after the unknown amount of time has passed, the child is separated from the parents and the loving partner is killed in front of them – the main quest is settled. Now there’s only the giant open world to explore. Fallout 4 introduces the mechanics of settlement building, where players can build their own little town. Gathering material for crafting and building brings more “survival” elements into the old formula. Within their own settlements, players will be able to build all needed utilities, from storage spaces to power armor stations. Visual upgrade from the previous game brings life to what used to be brown wastelands, now filled with details and color.",
+        "The fourth discover in the post-apocalyptic action RPG series from Bethesda studious brings players back to the retro-future. After customizing the facial features of the character, players will be admitted to the Vault 111 with their family, and tricked into entering the cryogenic capsule. After the rude awakening after the unknown amount of time has passed, the child is separated from the parents and the loving partner is killed in front of them – the main quest is settled. Now there’s only the giant open world to explore. Fallout 4 introduces the mechanics of settlement building, where players can build their own little town. Gathering material for crafting and building brings more “survival” elements into the old formula. Within their own settlements, players will be able to build all needed utilities, from storage spaces to power armor stations. Visual upgrade from the previous discover brings life to what used to be brown wastelands, now filled with details and color.",
     },
     gameMovies: { count: 0, next: null, previous: null, results: [] },
   },
@@ -5249,7 +5249,7 @@ export const mockData = [
       ],
     },
     explanation:
-      "An open-world action-adventure game set in feudal Japan. It features a similar level of detail and realism to GTA, but with a samurai setting and a focus on stealth and combat.",
+      "An open-world action-adventure discover set in feudal Japan. It features a similar level of detail and realism to GTA, but with a samurai setting and a focus on stealth and combat.",
     gameData: {
       id: 58550,
       slug: "ghost-of-tsushima",
@@ -6866,7 +6866,7 @@ export const mockData = [
       name: "Horizon Zero Dawn",
       name_original: "Horizon Zero Dawn",
       description:
-        "<p>Horizon Zero Dawn is an experiment. A very impressive experiment that actually succeeded. <br />\nHaving a very curious mix of cyberpunk and prehistorical styles and esthetic, the game provides us with quite a unique experience. We need to arm ourselves with arrows and a bow, with a spear or any other prehistorical-ish weapon in order to defeat out enemies - dinosaur-mechanisms that are spread around the world. If that wasn&#39;t enough, Aloy our main protagonist can control an AI named GAIA. What we&#39;re having here is an exciting connection with &quot;very old times&quot; and &quot;near future&quot;, even though the game is set up in the 31st century. <br />\nBeing an outcast with her father Rost, Aloy must restore her position in the tribe and save the world by stopping the Eclipse, a cult that wants to rule the world. Join her on that journey, exploring the world and people that live in such hard surroundings.</p>",
+        "<p>Horizon Zero Dawn is an experiment. A very impressive experiment that actually succeeded. <br />\nHaving a very curious mix of cyberpunk and prehistorical styles and esthetic, the discover provides us with quite a unique experience. We need to arm ourselves with arrows and a bow, with a spear or any other prehistorical-ish weapon in order to defeat out enemies - dinosaur-mechanisms that are spread around the world. If that wasn&#39;t enough, Aloy our main protagonist can control an AI named GAIA. What we&#39;re having here is an exciting connection with &quot;very old times&quot; and &quot;near future&quot;, even though the discover is set up in the 31st century. <br />\nBeing an outcast with her father Rost, Aloy must restore her position in the tribe and save the world by stopping the Eclipse, a cult that wants to rule the world. Join her on that journey, exploring the world and people that live in such hard surroundings.</p>",
       metacritic: 89,
       metacritic_platforms: [
         {
@@ -7295,7 +7295,7 @@ export const mockData = [
       esrb_rating: { id: 3, name: "Teen", slug: "teen" },
       clip: null,
       description_raw:
-        'Horizon Zero Dawn is an experiment. A very impressive experiment that actually succeeded. \r\nHaving a very curious mix of cyberpunk and prehistorical styles and esthetic, the game provides us with quite a unique experience. We need to arm ourselves with arrows and a bow, with a spear or any other prehistorical-ish weapon in order to defeat out enemies - dinosaur-mechanisms that are spread around the world. If that wasn\'t enough, Aloy our main protagonist can control an AI named GAIA. What we\'re having here is an exciting connection with "very old times" and "near future", even though the game is set up in the 31st century. \r\nBeing an outcast with her father Rost, Aloy must restore her position in the tribe and save the world by stopping the Eclipse, a cult that wants to rule the world. Join her on that journey, exploring the world and people that live in such hard surroundings.',
+        'Horizon Zero Dawn is an experiment. A very impressive experiment that actually succeeded. \r\nHaving a very curious mix of cyberpunk and prehistorical styles and esthetic, the discover provides us with quite a unique experience. We need to arm ourselves with arrows and a bow, with a spear or any other prehistorical-ish weapon in order to defeat out enemies - dinosaur-mechanisms that are spread around the world. If that wasn\'t enough, Aloy our main protagonist can control an AI named GAIA. What we\'re having here is an exciting connection with "very old times" and "near future", even though the discover is set up in the 31st century. \r\nBeing an outcast with her father Rost, Aloy must restore her position in the tribe and save the world by stopping the Eclipse, a cult that wants to rule the world. Join her on that journey, exploring the world and people that live in such hard surroundings.',
     },
     gameMovies: { count: 0, next: null, previous: null, results: [] },
   },

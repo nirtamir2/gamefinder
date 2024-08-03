@@ -1,5 +1,5 @@
 import "server-only";
-import { recommendGamesWithAI } from "@/app/game/actions/recommendGamesWithAI.action";
+import { recommendGamesWithAI } from "@/app/discover/actions/recommendGamesWithAI.action";
 import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
 import {
