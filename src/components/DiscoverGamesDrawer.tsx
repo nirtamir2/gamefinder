@@ -1,5 +1,5 @@
-import { UpdateSearchParamsForm } from "@/components/UpdateSearchParamsForm";
-import { Button } from "@/components/ui/Button";
+import type { ReactNode } from "react";
+import { DiscoverGameDrawerContent } from "@/components/DiscoverGameDrawerContent";
 import {
   Drawer,
   DrawerClose,
@@ -9,26 +9,31 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
+import { Icon } from "@/components/ui/icons/Icon";
 
-export function DiscoverGamesDrawer() {
+export function DiscoverGamesDrawer(props: {
+  trigger: ReactNode;
+  triggerAsChild: boolean;
+}) {
+  const { trigger, triggerAsChild } = props;
+
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <Button>Discover Games</Button>
-      </DrawerTrigger>
+      <DrawerTrigger asChild={triggerAsChild}>{trigger}</DrawerTrigger>
       <DrawerContent>
         <div className="absolute right-4 top-4">
           <DrawerClose>
-            <div className="text-3xl">✖︎</div>
+            <Icon name="x" height={24} width={24} className="text-white" />
+            <div className="sr-only">Close</div>
           </DrawerClose>
         </div>
         <DrawerHeader>
-          <DrawerTitle>Discover Games</DrawerTitle>
+          <DrawerTitle>Find Gameplays</DrawerTitle>
           <DrawerDescription>
-            <div className="sr-only">Discover Games</div>
+            <div className="sr-only">Find Gameplays</div>
           </DrawerDescription>
         </DrawerHeader>
-        <UpdateSearchParamsForm />
+        <DiscoverGameDrawerContent />
       </DrawerContent>
     </Drawer>
   );

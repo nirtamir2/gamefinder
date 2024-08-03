@@ -1,7 +1,8 @@
 import Image from "next/image";
 import cubeImageSrc from "@/assets/cube.png";
-import gemeniIconSrc from "@/assets/gemimi.svg";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
+import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/icons/Icon";
 
 export default async function Home() {
   return (
@@ -14,13 +15,22 @@ export default async function Home() {
             Use AI to find your next favorite videogame
           </h2>
           <div className="flex justify-center pt-8">
-            <DiscoverGamesDrawer />
+            <DiscoverGamesDrawer
+              triggerAsChild
+              trigger={<Button>Discover Games</Button>}
+            />
           </div>
         </div>
       </div>
       <footer className="fixed bottom-16 flex w-full items-center justify-center gap-2">
         <div className="pt-1 text-white opacity-30">Powered by</div>
-        <Image alt="Gemini" className="opacity-30" src={gemeniIconSrc} />
+        <div className="sr-only">Gemini</div>
+        <Icon
+          className="text-white opacity-30"
+          name="gemini"
+          width={56}
+          height={21}
+        />
       </footer>
     </div>
   );

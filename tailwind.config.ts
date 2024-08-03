@@ -27,6 +27,7 @@ const config: Config = {
         "text-on-primary": "hsl(var(--text-on-primary))",
         "secondary-button-text": "hsl(var(--secondary-button-text))",
         "button-background": "hsl(var(--button-background))",
+        "button-selected-background": "hsl(var(--button-selected-background))",
         "input-background": "hsl(var(--input-background))",
         white: "hsl(var(--white))",
       },

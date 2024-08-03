@@ -1,34 +1,6 @@
 import { Icon } from "@/components/ui/icons/Icon";
 import type { IconName } from "@/components/ui/icons/name";
 
-export function getUnifiedPlatformName(platform: string) {
-  switch (platform) {
-    case "macos": {
-      return "macOS";
-    }
-    case "ios": {
-      return "iOS";
-    }
-    case "android": {
-      return "Android";
-    }
-    case "pc": {
-      return "PC";
-    }
-    case "xbox-old":
-    case "xbox-one":
-    case "xbox360": {
-      return "Xbox";
-    }
-    case "playstation4":
-    case "playstation3":
-    case "playstation2": {
-      return "PlayStation";
-    }
-  }
-  return null;
-}
-
 const platformToIcon: Record<string, IconName> = {
   Android: "android" as const,
   macOS: "macos" as const,
@@ -41,6 +13,8 @@ const platformToIcon: Record<string, IconName> = {
   string
 >;
 
+const iconSize = 20;
+
 export function PlatformIcon(props: { platform: string }) {
   const { platform } = props;
   const iconName = platformToIcon[platform];
@@ -50,7 +24,12 @@ export function PlatformIcon(props: { platform: string }) {
   return (
     <div className="min-w-max" title={iconName}>
       <div className="sr-only">{platform}</div>
-      <Icon name={iconName} height={24} width={24} className="text-white" />
+      <Icon
+        name={iconName}
+        height={iconSize}
+        width={iconSize}
+        className="text-white"
+      />
     </div>
   );
 }
@@ -61,9 +40,9 @@ export function PlatformIcon(props: { platform: string }) {
  *                             height={56}
  *                             width={56}
  *                             src={
- *                               platform.platform.image ??
- *                               platform.platform.image_background
+ *                               platforms.platforms.image ??
+ *                               platforms.platforms.image_background
  *                             }
- *                             alt={platform.platform.name}
+ *                             alt={platforms.platforms.name}
  *                           />
  */

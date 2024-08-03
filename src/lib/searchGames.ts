@@ -180,7 +180,7 @@ export async function searchGames(searchTerm: string) {
 //   "dominant_color": "0f0f0f",
 //   "parent_platforms": [
 //       {
-//           "platform": {
+//           "platforms": {
 //               "id": 1,
 //               "name": "PC",
 //               "slug": "pc"
@@ -189,7 +189,7 @@ export async function searchGames(searchTerm: string) {
 //   ],
 //   "platforms": [
 //       {
-//           "platform": {
+//           "platforms": {
 //               "id": 4,
 //               "name": "PC",
 //               "slug": "pc",

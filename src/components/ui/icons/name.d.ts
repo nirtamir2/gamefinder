@@ -2,8 +2,11 @@
 
 export type IconName =
   | "android"
+  | "gemini"
   | "ios"
   | "macos"
   | "playstation"
+  | "v"
   | "windows"
+  | "x"
   | "xbox";
