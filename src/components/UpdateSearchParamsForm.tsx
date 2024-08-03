@@ -9,7 +9,7 @@ export function UpdateSearchParamsForm(props: {
   onClickPlatforms: () => void;
   onChangeLikedGames: (likedGames: string) => void;
 }) {
-  const { platforms, likedGames, onClickPlatforms, onChangeLikedGames } = props;
+  const { likedGames, platforms, onClickPlatforms, onChangeLikedGames } = props;
 
   const platformsString = platforms.join(", ");
   return (

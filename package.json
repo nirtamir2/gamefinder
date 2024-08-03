@@ -56,6 +56,7 @@
     "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-react-hooks": "5.1.0-beta-26f2496093-20240514",
     "eslint-plugin-react-refresh": "^0.4.8",
+    "eslint-plugin-sort-destructure-keys-typescript": "^0.0.1",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
