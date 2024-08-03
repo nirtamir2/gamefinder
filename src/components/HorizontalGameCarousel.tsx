@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { FetchGameDataResult } from "@/app/game/[gameId]/fetchGamesData";
+import type { FetchGameDataResult } from "@/app/game/fetchGamesData";
 import {
   Carousel,
   CarouselContent,

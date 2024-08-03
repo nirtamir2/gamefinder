@@ -1,6 +1,6 @@
 "use client";
 
-import { navigateToSearchResult } from "@/app/game/[gameId]/actions/navigateToSearchResult.action";
+import { navigateToSearchResult } from "@/app/game/actions/navigateToSearchResult.action";
 import { Button } from "@/components/ui/Button";
 
 export function UpdateSearchParamsForm(props: {

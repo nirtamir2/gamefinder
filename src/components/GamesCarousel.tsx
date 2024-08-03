@@ -1,4 +1,4 @@
-import type { FetchGameDataResult } from "@/app/game/[gameId]/fetchGamesData";
+import type { FetchGameDataResult } from "@/app/game/fetchGamesData";
 import { HorizontalGameCarousel } from "@/components/HorizontalGameCarousel";
 import { PlatformList } from "@/components/PlatformList";
 import {
