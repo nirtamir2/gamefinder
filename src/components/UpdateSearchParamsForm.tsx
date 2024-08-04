@@ -2,6 +2,7 @@
 
 import { navigateToSearchResult } from "@/app/discover/actions/navigateToSearchResult.action";
 import { Button } from "@/components/ui/Button";
+import { formatList } from "@/utils/formatList";
 
 export function UpdateSearchParamsForm(props: {
   likedGames: string;
@@ -20,7 +21,7 @@ export function UpdateSearchParamsForm(props: {
       <button type="button" onClick={() => onClickPlatforms()}>
         <div className="flex flex-wrap justify-between gap-8">
           <div>Platforms</div>
-          <div>{platforms.join(", ")}</div>
+          <div>{formatList(platforms)}</div>
         </div>
       </button>
       <input name="platforms" value={platforms} className="hidden" />
