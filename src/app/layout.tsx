@@ -6,8 +6,10 @@ import "./globals.css";
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "gameplays.io",
-  description: "Find your games using AI",
+  title: "Gameplays.io - Discover Great Games to Play",
+  description:
+    "Find great games with AI and watch gameplay videos on Gameplays.io.",
+  keywords: ["gaming", "AI recommendations", "gameplay videos"],
 };
 
 export default function RootLayout({
