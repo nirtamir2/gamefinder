@@ -35,8 +35,8 @@ export function SelectPlatform(props: {
                 className={clsx(
                   "relative h-10 w-full p-2 px-8 text-sm font-bold transition-colors",
                   isSelected
-                    ? "bg-button-background text-white hover:bg-secondary-button-text"
-                    : "bg-button-background text-secondary-button-text hover:bg-secondary-button-text",
+                    ? "bg-button-selected-background text-white hover:bg-secondary-button-text"
+                    : "bg-button-background text-secondary-button-text hover:bg-button-selected-background",
                 )}
                 type="button"
                 onClick={() => {
