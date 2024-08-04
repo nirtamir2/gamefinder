@@ -24,7 +24,7 @@ export function UpdateSearchParamsForm(props: {
           <div>{platformsString}</div>
         </div>
       </button>
-      <input name="platforms" value={platformsString} className="hidden" />
+      <input name="platforms" value={platforms} className="hidden" />
       <div className="flex flex-col gap-2">
         <label className="text-white" htmlFor="likedGames">
           What kind of games do you like?
