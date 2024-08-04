@@ -9,6 +9,7 @@ const platformToIcon: Record<string, IconName> = {
   PlayStation: "playstation" as const,
   PC: "windows" as const,
   Xbox: "xbox" as const,
+  Nintendo: "nintendo-switch" as const,
 } satisfies Record<
   NonNullable<ReturnType<typeof getUnifiedPlatformName>>,
   string

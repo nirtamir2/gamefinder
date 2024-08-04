@@ -1,5 +1,10 @@
 export function getUnifiedPlatformName(platform: string) {
   switch (platform) {
+    case "wii-u":
+    case "nintendo-3ds'":
+    case "nintendo-switch": {
+      return "Nintendo";
+    }
     case "macos": {
       return "macOS";
     }
@@ -14,12 +19,15 @@ export function getUnifiedPlatformName(platform: string) {
     }
     case "xbox-old":
     case "xbox-one":
+    case "xbox-series-x":
     case "xbox360": {
       return "Xbox";
     }
+    case "playstation5":
     case "playstation4":
     case "playstation3":
-    case "playstation2": {
+    case "playstation2":
+    case "ps-vita": {
       return "PlayStation";
     }
   }

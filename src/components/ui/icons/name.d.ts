@@ -5,6 +5,7 @@ export type IconName =
   | "gemini"
   | "ios"
   | "macos"
+  | "nintendo-switch"
   | "playstation"
   | "v"
   | "windows"
