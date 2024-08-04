@@ -17,14 +17,14 @@ export function UpdateSearchParamsForm(props: {
       action={navigateToSearchResult}
       className="container flex flex-col gap-8 p-8"
     >
-      <input id="generes" type="text" name="genres" className="sr-only" />
+      <input id="generes" type="text" name="genres" className="hidden" />
       <button type="button" onClick={() => onClickPlatforms()}>
         <div className="flex flex-wrap justify-between gap-8">
           <div>Platforms</div>
           <div>{formatList(platforms)}</div>
         </div>
       </button>
-      <input name="platforms" value={platforms} className="hidden" />
+      <input name="platforms" defaultValue={platforms} className="hidden" />
       <div className="flex flex-col gap-2">
         <label className="text-white" htmlFor="likedGames">
           What kind of games do you like?
