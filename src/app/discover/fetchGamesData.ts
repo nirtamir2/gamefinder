@@ -100,7 +100,13 @@ export async function fetchGamesData({
         };
       }
 
-      await updateFirebaseFetchGameCount(slug);
+      try {
+        await updateFirebaseFetchGameCount(slug);
+      } catch {
+        console.error(
+          `fetchGamesData - updateFirebaseFetchGameCount failed for slug "${slug}"}`,
+        );
+      }
 
       const data = fetchedGameDoc.data() as Awaited<
         Parameters<typeof updateFirebaseFetchedGame>[1]
