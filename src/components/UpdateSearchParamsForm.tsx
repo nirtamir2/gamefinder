@@ -35,7 +35,7 @@ export function UpdateSearchParamsForm(props: {
           name="likedGames"
           value={likedGames}
           rows={6}
-          className="w-full resize-none border border-white bg-transparent p-4 text-sm text-secondary-button-text"
+          className="w-full resize-none border border-white bg-transparent p-4 text-secondary-button-text"
           placeholder="Example: I like challenging puzzle games with adventures like legend of zelda or Tunic"
           onChange={(e) => onChangeLikedGames(e.target.value)}
         />
