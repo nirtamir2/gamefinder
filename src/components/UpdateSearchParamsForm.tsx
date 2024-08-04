@@ -11,7 +11,6 @@ export function UpdateSearchParamsForm(props: {
 }) {
   const { likedGames, platforms, onClickPlatforms, onChangeLikedGames } = props;
 
-  const platformsString = platforms.join(", ");
   return (
     <form
       action={navigateToSearchResult}
@@ -21,7 +20,7 @@ export function UpdateSearchParamsForm(props: {
       <button type="button" onClick={() => onClickPlatforms()}>
         <div className="flex flex-wrap justify-between gap-8">
           <div>Platforms</div>
-          <div>{platformsString}</div>
+          <div>{platforms.join(", ")}</div>
         </div>
       </button>
       <input name="platforms" value={platforms} className="hidden" />
