@@ -1,4 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
+import { PopulateFirestoreDBButton } from "@/app/debug/PopulateFirestoreDBButton";
 import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import type { FirebaseCustomGameDataResult } from "@/firebase/firebaseFirestoreFunctions";
 import { firestoreCollection } from "@/firebase/firestoreCollection";
@@ -53,6 +54,9 @@ export default async function DebugGamesPage() {
 
   return (
     <main>
+      <div>
+        <PopulateFirestoreDBButton />
+      </div>
       <div className="text-2xl">Example</div>
       <pre>{JSON.stringify(exampleAsset, null, 2)}</pre>
       <hr />
