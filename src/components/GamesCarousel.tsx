@@ -1,6 +1,7 @@
 import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
-import { HorizontalGameCarousel } from "@/components/HorizontalGameCarousel";
+import { GameplayAsset } from "@/components/GameplayAsset";
 import { PlatformList } from "@/components/PlatformList";
+import { getGameplayAssets } from "@/components/getGameplayAssets";
 import {
   Carousel,
   CarouselContent,
@@ -21,13 +22,24 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
     >
       <CarouselContent>
         {games.map((game) => {
+          const assets = getGameplayAssets({
+            game,
+          });
           return (
             <CarouselItem key={game.id}>
               <div key={game.id} className="relative size-full">
-                <HorizontalGameCarousel
-                  game={game}
-                  customGameData={game.customGameData}
-                />
+                {assets.map((asset, index) => {
+                  if (index === 0) {
+                    return (
+                      <GameplayAsset
+                        key={asset.src}
+                        asset={asset}
+                        gameData={game.gameData}
+                      />
+                    );
+                  }
+                  return null;
+                })}
                 <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
                   <div>
                     <span className="inline pb-4 pr-4 text-2xl font-semibold text-white">
