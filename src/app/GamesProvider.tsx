@@ -11,6 +11,8 @@ type ContextType = {
   likedGames: Array<string>;
   genres: Array<string>;
   platforms: Array<string>;
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: (isOpen: boolean) => void;
   updateSearchParameters: (searchParameters: {
     likedGames: Array<string>;
     genres: Array<string>;
@@ -18,13 +20,17 @@ type ContextType = {
   }) => void;
 };
 
+const noop = () => {
+  // do nothing
+};
+
 const SearchParametersProviderContext = createContext<ContextType>({
   likedGames: [],
   genres: [],
   platforms: [],
-  updateSearchParameters: () => {
-    // do nothing
-  },
+  isDrawerOpen: false,
+  setIsDrawerOpen: noop,
+  updateSearchParameters: noop,
 });
 
 type Props = {
@@ -43,6 +49,7 @@ export const SearchParametersProviderProvider = ({
   const [likedGames, setLikedGames] = useState(initialLikedGames ?? []);
   const [genres, setGenres] = useState(initialGenres ?? []);
   const [platforms, setPlatforms] = useState(initialPlatforms ?? []);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
 
   const value = useMemo(() => {
@@ -58,6 +65,8 @@ export const SearchParametersProviderProvider = ({
       setLikedGames(likedGames);
       setGenres(genres);
       setPlatforms(platforms);
+      setIsDrawerOpen(false);
+
       const searchParamsSchemaSerializer = createSerializer({
         likedGames: stringArraySchema,
         genres: stringArraySchema,
@@ -79,8 +88,10 @@ export const SearchParametersProviderProvider = ({
       genres,
       platforms,
       updateSearchParameters,
+      isDrawerOpen,
+      setIsDrawerOpen,
     };
-  }, [genres, likedGames, platforms, router]);
+  }, [genres, isDrawerOpen, likedGames, platforms, router]);
 
   return (
     <SearchParametersProviderContext.Provider value={value}>
@@ -90,5 +101,9 @@ export const SearchParametersProviderProvider = ({
 };
 
 export const useSearchParametersProvider = () => {
-  return useContext(SearchParametersProviderContext);
+  const context = useContext(SearchParametersProviderContext);
+  if (context == null) {
+    throw new Error("useSearchParametersProvider called without Provider");
+  }
+  return context;
 };

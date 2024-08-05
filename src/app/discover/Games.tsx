@@ -2,10 +2,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParametersProvider } from "@/app/GamesProvider";
+import LoadingPage from "@/app/debug/loading/page";
 import ErrorPage from "@/app/discover/error";
 import { fetchGamesData } from "@/app/discover/fetchGamesData";
 import { GamesCarousel } from "@/components/GamesCarousel";
-import { Loader } from "@/components/ui/Loader/Loader";
 
 export function Games() {
   const { likedGames, genres, platforms } = useSearchParametersProvider();
@@ -20,7 +20,7 @@ export function Games() {
       }),
   });
   if (isPending) {
-    return <Loader />;
+    return <LoadingPage />;
   }
   if (error) {
     return <ErrorPage error={error} />;

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SearchParametersProviderProvider } from "@/app/GamesProvider";
 import cubeImageSrc from "@/assets/cube.png";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
 import { Button } from "@/components/ui/Button";
@@ -15,10 +16,12 @@ export default async function Home() {
             Use AI to find your next favorite videogame
           </h2>
           <div className="flex justify-center pt-8">
-            <DiscoverGamesDrawer
-              triggerAsChild
-              trigger={<Button>Discover Games</Button>}
-            />
+            <SearchParametersProviderProvider>
+              <DiscoverGamesDrawer
+                triggerAsChild
+                trigger={<Button>Discover Games</Button>}
+              />
+            </SearchParametersProviderProvider>
           </div>
         </div>
       </div>
