@@ -10,7 +10,7 @@ export default function ErrorPage({
   reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  reset?: () => void;
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
@@ -24,7 +24,7 @@ export default function ErrorPage({
       <Button
         onClick={
           // Attempt to recover by trying to re-render the segment
-          () => reset()
+          () => reset?.()
         }
       >
         Try again

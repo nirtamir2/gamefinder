@@ -1,25 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
+import { useSearchParametersProvider } from "@/app/GamesProvider";
 import { SelectPlatform } from "@/components/SelectPlatform";
 import { UpdateSearchParamsForm } from "@/components/UpdateSearchParamsForm";
 
-export function DiscoverGameDrawerContent() {
-  const [platformFromQueryState] = useQueryState(
-    "platforms",
-    parseAsArrayOf(parseAsString).withDefault([]),
-  );
+
+export function DiscoverGameDrawerContent(props: {
+  onSubmit: (_: {
+    likedGames: Array<string>;
+    genres: Array<string>;
+    platforms: Array<string>;
+  }) => void;
+}) {
+  const { onSubmit } = props;
 
   const [formType, setFormType] = useState<"mainForm" | "choosePlatformForm">(
     "mainForm",
   );
 
-  const [currentPlatforms, setCurrentPlatforms] = useState<Array<string>>(
-    platformFromQueryState,
-  );
-
-  const [likedGames, setLikedGames] = useState("");
+  const { platforms } = useSearchParametersProvider();
+  const [currentPlatforms, setCurrentPlatforms] =
+    useState<Array<string>>(platforms);
 
   if (formType === "choosePlatformForm") {
     return (
@@ -35,10 +37,9 @@ export function DiscoverGameDrawerContent() {
   if (formType === "mainForm") {
     return (
       <UpdateSearchParamsForm
-        likedGames={likedGames}
         platforms={currentPlatforms}
         onClickPlatforms={() => setFormType("choosePlatformForm")}
-        onChangeLikedGames={(likedGames) => setLikedGames(likedGames)}
+        onSubmit={onSubmit}
       />
     );
   }

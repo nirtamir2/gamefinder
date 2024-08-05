@@ -1,21 +1,31 @@
 "use client";
 
-import { navigateToSearchResult } from "@/app/discover/actions/navigateToSearchResult.action";
 import { Button } from "@/components/ui/Button";
 import { formatList } from "@/utils/formatList";
 
 export function UpdateSearchParamsForm(props: {
-  likedGames: string;
   platforms: Array<string>;
   onClickPlatforms: () => void;
-  onChangeLikedGames: (likedGames: string) => void;
+  onSubmit: (_: {
+    likedGames: Array<string>;
+    genres: Array<string>;
+    platforms: Array<string>;
+  }) => void;
 }) {
-  const { likedGames, platforms, onClickPlatforms, onChangeLikedGames } = props;
+  const { platforms, onClickPlatforms, onSubmit } = props;
 
   return (
     <form
-      action={navigateToSearchResult}
       className="container flex flex-col gap-8 p-8"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const likedGames = e.currentTarget["likedGames"].value as string;
+        onSubmit({
+          likedGames: [likedGames],
+          genres: [],
+          platforms,
+        });
+      }}
     >
       <input id="generes" type="text" name="genres" className="hidden" />
       <button type="button" onClick={() => onClickPlatforms()}>
@@ -33,11 +43,9 @@ export function UpdateSearchParamsForm(props: {
           required
           id="likedGames"
           name="likedGames"
-          value={likedGames}
           rows={6}
           className="w-full resize-none border border-white bg-transparent p-4 text-secondary-button-text"
           placeholder="Example: I like challenging puzzle games with adventures like legend of zelda or Tunic"
-          onChange={(e) => onChangeLikedGames(e.target.value)}
         />
       </div>
       <Button type="submit">Submit</Button>

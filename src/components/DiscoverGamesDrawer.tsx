@@ -1,4 +1,8 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { useState } from "react";
+import { useSearchParametersProvider } from "@/app/GamesProvider";
 import { DiscoverGameDrawerContent } from "@/components/DiscoverGameDrawerContent";
 import {
   Drawer,
@@ -16,9 +20,24 @@ export function DiscoverGamesDrawer(props: {
   triggerAsChild: boolean;
 }) {
   const { trigger, triggerAsChild } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const { updateSearchParameters } = useSearchParametersProvider();
+
+  function handleSubmit({
+    likedGames,
+    platforms,
+    genres,
+  }: {
+    likedGames: Array<string>;
+    genres: Array<string>;
+    platforms: Array<string>;
+  }) {
+    updateSearchParameters({ likedGames, platforms, genres });
+    setIsOpen(false);
+  }
 
   return (
-    <Drawer>
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild={triggerAsChild}>{trigger}</DrawerTrigger>
       <DrawerContent>
         <div className="absolute right-4 top-4">
@@ -33,7 +52,7 @@ export function DiscoverGamesDrawer(props: {
             <div className="sr-only">Find Gameplays</div>
           </DrawerDescription>
         </DrawerHeader>
-        <DiscoverGameDrawerContent />
+        <DiscoverGameDrawerContent onSubmit={handleSubmit} />
       </DrawerContent>
     </Drawer>
   );
