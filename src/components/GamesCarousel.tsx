@@ -55,6 +55,9 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   <div className="pt-4">
                     <PlatformList gameData={game.gameData} />
                   </div>
+                  {/*<div className="pt-8">*/}
+                  {/*  <Button>Buy Game</Button>*/}
+                  {/*</div>*/}
                 </div>
               </div>
             </CarouselItem>

@@ -13,6 +13,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/Drawer";
+import { IconButton } from "@/components/ui/IconButton";
 import { Icon } from "@/components/ui/icons/Icon";
 import { formatList } from "@/utils/formatList";
 
@@ -35,22 +36,15 @@ export function PlatformsDrawer(props: {
     });
   }
 
+  const formattedPlatformsText =
+    currentPlatforms.length === 0
+      ? "All platforms"
+      : formatList(currentPlatforms);
+
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
-        <div className="space-x-4 p-4">
-          <Icon
-            name="platform"
-            height={24}
-            width={24}
-            className="inline align-text-top text-white"
-          />
-          <div className="inline text-white underline">
-            {currentPlatforms.length === 0
-              ? "All platforms"
-              : formatList(currentPlatforms)}
-          </div>
-        </div>
+      <DrawerTrigger asChild>
+        <IconButton iconName="settings">{formattedPlatformsText}</IconButton>
       </DrawerTrigger>
       <DrawerContent>
         <div className="absolute right-4 top-4">
