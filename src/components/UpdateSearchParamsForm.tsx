@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { TextArea } from "@/components/ui/TextArea";
 import { formatList } from "@/utils/formatList";
 
 export function UpdateSearchParamsForm(props: {
@@ -39,12 +40,11 @@ export function UpdateSearchParamsForm(props: {
         <label className="text-white" htmlFor="likedGames">
           What kind of games do you like?
         </label>
-        <textarea
+        <TextArea
           required
           id="likedGames"
           name="likedGames"
           rows={6}
-          className="w-full resize-none border border-white bg-transparent p-4 text-secondary-button-text"
           placeholder="Example: I like challenging puzzle games with adventures like legend of zelda or Tunic"
         />
       </div>
