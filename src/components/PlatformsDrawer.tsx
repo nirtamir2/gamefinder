@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PlatformsSelectList } from "@/app/PlatformsSelectList";
+import { PlatformsSelectList } from "@/components/PlatformsSelectList";
 import { Button } from "@/components/ui/Button";
 import {
   Drawer,

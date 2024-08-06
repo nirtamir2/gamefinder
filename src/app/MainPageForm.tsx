@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParametersProvider } from "@/app/GamesProvider";
-import { PlatformsDrawer } from "@/app/PlatformsDrawer";
+import { PlatformsDrawer } from "@/components/PlatformsDrawer";
 import { Button } from "@/components/ui/Button";
 import { TextArea } from "@/components/ui/TextArea";
 
