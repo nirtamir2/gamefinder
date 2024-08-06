@@ -111,7 +111,7 @@ export function PlatformsSelectList(props: {
               }}
             >
               {isSelected ? (
-                <div className="absolute -right-2 -top-2 flex size-6 items-center justify-center border-2 border-black bg-white">
+                <div className="absolute -right-2 -top-2 flex size-6 items-center justify-center border-4 border-black bg-white">
                   <Icon
                     name="v"
                     height={12}
