@@ -1,4 +1,4 @@
-import type { ComponentProps} from "react";
+import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 
 export const TextArea = forwardRef<
@@ -9,7 +9,7 @@ export const TextArea = forwardRef<
     <textarea
       {...props}
       ref={ref}
-      className="w-full resize-none border border-white bg-transparent p-4 text-secondary-button-text"
+      className="w-full resize-none rounded-lg bg-button-background p-4 text-secondary-button-text"
     />
   );
 });

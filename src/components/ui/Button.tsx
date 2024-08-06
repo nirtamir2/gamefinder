@@ -10,7 +10,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
       ref={ref}
       {...restProps}
       type={type}
-      className="h-10 bg-primary p-2 px-8 text-sm font-bold text-black transition-colors hover:bg-primary-hover focus:bg-primary-focus"
+      className="h-10 w-full rounded-lg bg-primary p-2 px-8 text-sm font-bold text-black transition-colors hover:bg-primary-hover focus:bg-primary-focus"
     >
       {children}
     </button>

@@ -15,13 +15,15 @@ export default async function Home() {
           <h2 className="text-balance px-8 pt-2 text-center text-sm font-bold">
             Use AI to find your next favorite videogame
           </h2>
-          <div className="flex justify-center pt-8">
-            <SearchParametersProviderProvider>
-              <DiscoverGamesDrawer
-                triggerAsChild
-                trigger={<Button>Discover Games</Button>}
-              />
-            </SearchParametersProviderProvider>
+          <div className="flex justify-center px-8 pt-8">
+            <div className="w-full sm:max-w-56">
+              <SearchParametersProviderProvider>
+                <DiscoverGamesDrawer
+                  triggerAsChild
+                  trigger={<Button>Discover Games</Button>}
+                />
+              </SearchParametersProviderProvider>
+            </div>
           </div>
         </div>
       </div>
