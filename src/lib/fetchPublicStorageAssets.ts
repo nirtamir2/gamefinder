@@ -19,7 +19,7 @@ function parseFilename(
     : null;
 }
 
-export async function getPublicStorageAssets() {
+export async function fetchPublicStorageAssets() {
   const listRef = ref(firebaseStorage, "public");
   const items = await listAll(listRef);
   return items.items.flatMap((item) => {

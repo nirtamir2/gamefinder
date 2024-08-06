@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
-import { getPublicStorageAssets } from "@/components/debug/getPublicStorageAssets";
 import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import type { FirebaseCustomGameDataResult } from "@/firebase/firebaseFirestoreFunctions";
 import { firestoreCollection } from "@/firebase/firestoreCollection";
+import { fetchPublicStorageAssets } from "@/lib/fetchPublicStorageAssets";
 
 type Data = {
   type: string;
@@ -28,7 +28,7 @@ export function PopulateFirestoreDBButton() {
   const [state, setState] = useState({});
 
   async function handlePopulateDB() {
-    const allStorageAssets = await getPublicStorageAssets();
+    const allStorageAssets = await fetchPublicStorageAssets();
     const assetsBySlug = groupItemsBySlug(allStorageAssets);
 
     setState(assetsBySlug);
