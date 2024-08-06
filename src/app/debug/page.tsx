@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { PopulateFirestoreDBButton } from "@/app/debug/PopulateFirestoreDBButton";
+import { PopulateFirestoreDBButton } from "@/components/debug/PopulateFirestoreDBButton";
 import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import type { FirebaseCustomGameDataResult } from "@/firebase/firebaseFirestoreFunctions";
 import { firestoreCollection } from "@/firebase/firestoreCollection";

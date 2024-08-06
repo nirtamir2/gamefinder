@@ -1,4 +1,3 @@
-import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
 import { GameplayAsset } from "@/components/GameplayAsset";
 import { getGameplayAssets } from "@/components/getGameplayAssets";
 import {
@@ -9,6 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/Carousel";
 import type { FirebaseCustomGameDataResult } from "@/firebase/firebaseFirestoreFunctions";
+import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
 export function HorizontalGameCarousel(props: {
   customGameData: FirebaseCustomGameDataResult | null;

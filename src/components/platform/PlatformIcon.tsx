@@ -1,4 +1,4 @@
-import type { getUnifiedPlatformName } from "@/components/getUnifiedPlatformName";
+import type { getUnifiedPlatformName } from "@/components/platform/getUnifiedPlatformName";
 import { Icon } from "@/components/ui/icons/Icon";
 import type { IconName } from "@/components/ui/icons/name";
 

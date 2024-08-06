@@ -1,7 +1,6 @@
 "use server";
+
 import "server-only";
-import { recommendGamesWithAI } from "@/app/discover/actions/recommendGamesWithAI.action";
-import { mockData } from "@/app/mocks/mock-data";
 import { env } from "@/env";
 import {
   createFirebaseCustomDataEntry,
@@ -13,7 +12,9 @@ import {
 } from "@/firebase/firebaseFirestoreFunctions";
 import { populateGameMovies } from "@/lib/populateGameMovies";
 import { populatedGame } from "@/lib/populatedGame";
+import { recommendGamesWithAI } from "@/lib/recommendGamesWithAI.action";
 import { searchGames } from "@/lib/searchGames";
+import { mockData } from "@/mocks/mock-data";
 
 async function fetchGameDataFromApi(gameSlug: string) {
   const [populatedGameData, populatedGameMovies] = await Promise.all([

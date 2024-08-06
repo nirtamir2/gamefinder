@@ -1,7 +1,6 @@
-import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
 import { GameplayAsset } from "@/components/GameplayAsset";
-import { PlatformList } from "@/components/PlatformList";
 import { getGameplayAssets } from "@/components/getGameplayAssets";
+import { PlatformList } from "@/components/platform/PlatformList";
 import { Button } from "@/components/ui/Button";
 import {
   Carousel,
@@ -10,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/Carousel";
+import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
 export function GamesCarousel(props: { games: FetchGameDataResult }) {
   const { games } = props;

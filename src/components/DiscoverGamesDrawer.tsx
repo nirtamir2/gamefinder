@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useSearchParametersProvider } from "@/app/GamesProvider";
 import { DiscoverGameDrawerContent } from "@/components/DiscoverGameDrawerContent";
+import { useGameProvider } from "@/components/providers/GameContext";
 import {
   Drawer,
   DrawerClose,
@@ -20,7 +20,7 @@ export function DiscoverGamesDrawer(props: {
 }) {
   const { trigger, triggerAsChild } = props;
   const { updateSearchParameters, isDrawerOpen, setIsDrawerOpen } =
-    useSearchParametersProvider();
+    useGameProvider();
 
   function handleSubmit({
     likedGames,

@@ -1,9 +1,7 @@
 "use client";
 
-import { SearchParametersProviderProvider } from "@/app/GamesProvider";
-import { Games } from "@/app/discover/Games";
-import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
-import { IconButton } from "@/components/ui/IconButton";
+import { Games } from "@/components/Games";
+import { GameProvider } from "@/components/providers/GameProvider";
 import { stringArraySchema } from "@/utils/stringArraySchema";
 
 export default async function GamePage(props: {
@@ -21,24 +19,12 @@ export default async function GamePage(props: {
   const platforms = stringArraySchema.parseServerSide(searchParams?.platforms);
 
   return (
-    <SearchParametersProviderProvider
+    <GameProvider
       initialLikedGames={likedGames}
       initialGenres={genres}
       initialPlatforms={platforms}
     >
-      <main className="container min-h-dvh">
-        <div className="fixed left-0 top-0 z-10 w-full bg-gradient-to-b from-background to-transparent p-8">
-          <div className="flex justify-center">
-            <DiscoverGamesDrawer
-              triggerAsChild
-              trigger={
-                <IconButton iconName="settings">Modify search</IconButton>
-              }
-            />
-          </div>
-        </div>
-        <Games />
-      </main>
-    </SearchParametersProviderProvider>
+      <Games />
+    </GameProvider>
   );
 }

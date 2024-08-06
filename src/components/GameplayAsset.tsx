@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
+import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
 type Props = {
   asset: { type: "image" | "video"; src: string };

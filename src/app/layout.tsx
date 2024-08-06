@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
-import { Providers } from "@/app/Providers";
+import { Providers } from "@/components/providers/Providers";
 import "./globals.css";
 
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });

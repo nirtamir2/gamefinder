@@ -1,6 +1,6 @@
-import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
-import { PlatformIcon } from "@/components/PlatformIcon";
-import { getUnifiedPlatformName } from "@/components/getUnifiedPlatformName";
+import { PlatformIcon } from "@/components/platform/PlatformIcon";
+import { getUnifiedPlatformName } from "@/components/platform/getUnifiedPlatformName";
+import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
 function getUniqPlatformNames(game: FetchGameDataResult[number]["gameData"]) {
   return [

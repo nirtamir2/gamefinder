@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { SearchParametersProviderProvider } from "@/app/GamesProvider";
-import { MainPageForm } from "@/app/MainPageForm";
 import cubeImageSrc from "@/assets/cube.png";
+import { MainPageForm } from "@/components/MainPageForm";
 import { PoweredByGeminiFooter } from "@/components/PoweredByGeminiFooter";
+import { GameProvider } from "@/components/providers/GameProvider";
 
 export default async function Home() {
   return (
@@ -17,9 +17,9 @@ export default async function Home() {
               gameplays.io
             </h1>
           </div>
-          <SearchParametersProviderProvider>
+          <GameProvider>
             <MainPageForm />
-          </SearchParametersProviderProvider>
+          </GameProvider>
         </div>
       </div>
       <PoweredByGeminiFooter />

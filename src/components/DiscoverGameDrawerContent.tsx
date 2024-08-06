@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParametersProvider } from "@/app/GamesProvider";
-import { SelectPlatform } from "@/components/SelectPlatform";
 import { UpdateSearchParamsForm } from "@/components/UpdateSearchParamsForm";
-
+import { PlatformsSelectList } from "@/components/platform/PlatformsSelectList";
+import { useGameProvider } from "@/components/providers/GameContext";
+import { Button } from "@/components/ui/Button";
 
 export function DiscoverGameDrawerContent(props: {
   onSubmit: (_: {
@@ -19,19 +19,37 @@ export function DiscoverGameDrawerContent(props: {
     "mainForm",
   );
 
-  const { platforms } = useSearchParametersProvider();
+  const { platforms } = useGameProvider();
   const [currentPlatforms, setCurrentPlatforms] =
     useState<Array<string>>(platforms);
 
+  function handleSelectPlatform(platform: string) {
+    setCurrentPlatforms((currentPlatforms) => {
+      const filteredPlatforms = currentPlatforms.filter(
+        (currentPlatform) => currentPlatform !== platform,
+      );
+      return currentPlatforms.includes(platform)
+        ? filteredPlatforms
+        : [...filteredPlatforms, platform];
+    });
+  }
+
   if (formType === "choosePlatformForm") {
     return (
-      <SelectPlatform
-        currentPlatforms={currentPlatforms}
-        onFinishSelectPlatforms={(platforms) => {
-          setCurrentPlatforms(platforms);
-          setFormType("mainForm");
-        }}
-      />
+      <div className="container flex flex-col gap-8 p-8">
+        <PlatformsSelectList
+          currentPlatforms={currentPlatforms}
+          onSelectPlatform={handleSelectPlatform}
+        />
+        <Button
+          onClick={() => {
+            setCurrentPlatforms(platforms);
+            setFormType("mainForm");
+          }}
+        >
+          Approve
+        </Button>
+      </div>
     );
   }
   if (formType === "mainForm") {

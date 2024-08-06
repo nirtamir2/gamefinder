@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
-import { getPublicStorageAssets } from "@/app/debug/getPublicStorageAssets";
+import { getPublicStorageAssets } from "@/components/debug/getPublicStorageAssets";
 import { firebaseFirestore } from "@/firebase/firebaseFirestore";
 import type { FirebaseCustomGameDataResult } from "@/firebase/firebaseFirestoreFunctions";
 import { firestoreCollection } from "@/firebase/firestoreCollection";

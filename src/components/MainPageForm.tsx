@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParametersProvider } from "@/app/GamesProvider";
-import { PlatformsDrawer } from "@/components/PlatformsDrawer";
+import { PlatformsDrawer } from "@/components/platform/PlatformsDrawer";
+import { useGameProvider } from "@/components/providers/GameContext";
 import { Button } from "@/components/ui/Button";
 import { TextArea } from "@/components/ui/TextArea";
 
 export function MainPageForm() {
-  const { platforms, updateSearchParameters, genres } =
-    useSearchParametersProvider();
+  const { platforms, updateSearchParameters, genres } = useGameProvider();
   const [currentPlatforms, setCurrentPlatforms] =
     useState<Array<string>>(platforms);
 

@@ -1,4 +1,4 @@
-import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
+import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
 export function getGameplayAssets({
   game,
