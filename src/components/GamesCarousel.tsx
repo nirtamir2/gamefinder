@@ -2,6 +2,7 @@ import type { FetchGameDataResult } from "@/app/discover/fetchGamesData";
 import { GameplayAsset } from "@/components/GameplayAsset";
 import { PlatformList } from "@/components/PlatformList";
 import { getGameplayAssets } from "@/components/getGameplayAssets";
+import { Button } from "@/components/ui/Button";
 import {
   Carousel,
   CarouselContent,
@@ -55,9 +56,9 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   <div className="pt-4">
                     <PlatformList gameData={game.gameData} />
                   </div>
-                  {/*<div className="pt-8">*/}
-                  {/*  <Button>Buy Game</Button>*/}
-                  {/*</div>*/}
+                  <div className="pt-8">
+                    <Button>Buy Game</Button>
+                  </div>
                 </div>
               </div>
             </CarouselItem>
