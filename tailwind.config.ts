@@ -23,6 +23,7 @@ const config: Config = {
         },
         transparent: "transparent",
         background: "hsl(var(--background))",
+        overlay: "hsl(var(--overlay))",
         rating: "hsl(var(--rating))",
         "text-on-primary": "hsl(var(--text-on-primary))",
         "secondary-button-text": "hsl(var(--secondary-button-text))",

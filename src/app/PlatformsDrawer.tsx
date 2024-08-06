@@ -60,16 +60,18 @@ export function PlatformsDrawer(props: {
           </DrawerClose>
         </div>
         <DrawerHeader>
-          <DrawerTitle>Find Gameplays</DrawerTitle>
+          <DrawerTitle>Platforms</DrawerTitle>
           <DrawerDescription>
-            <div className="sr-only">Find Gameplays</div>
+            <div className="sr-only">Choose platforms</div>
           </DrawerDescription>
         </DrawerHeader>
-        <div className="container flex flex-col gap-8 p-8">
-          <PlatformsSelectList
-            currentPlatforms={currentPlatforms}
-            onSelectPlatform={handleSelectPlatform}
-          />
+        <div className="container flex flex-col gap-16 px-8 pb-16">
+          <div className="flex flex-col gap-8 px-8">
+            <PlatformsSelectList
+              currentPlatforms={currentPlatforms}
+              onSelectPlatform={handleSelectPlatform}
+            />
+          </div>
           <Button
             onClick={() => {
               setIsOpen(false);
@@ -98,7 +100,7 @@ export function PlatformsSelectList(props: {
           <li key={platform} className="w-full">
             <button
               className={clsx(
-                "relative h-10 w-full p-2 px-8 text-sm font-bold transition-colors",
+                "relative h-10 w-full rounded-lg p-2 px-8 text-sm font-bold transition-colors",
                 isSelected
                   ? "bg-button-selected-background text-white hover:bg-secondary-button-text"
                   : "bg-button-background text-secondary-button-text hover:bg-button-selected-background",
