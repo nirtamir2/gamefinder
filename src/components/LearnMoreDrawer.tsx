@@ -1,5 +1,4 @@
 import { GameHeader } from "@/components/GameHeader";
-import { getGameplayAssets } from "@/components/getGameplayAssets";
 import { Button } from "@/components/ui/Button";
 import {
   Drawer,
@@ -17,12 +16,19 @@ interface Props {
   game: FetchGameDataResult[number];
 }
 
+function getYoutubeSearchUrl(youtubeSearchTerm: string) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(youtubeSearchTerm)}`;
+}
+
+function getGoogleSearchUrl(searchTerm: string) {
+  return `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+}
+
 export function LearnMoreDrawer(props: Props) {
   const { game } = props;
 
-  const gameplayVideos = getGameplayAssets({ game }).filter(
-    (asset) => asset.type === "video",
-  );
+  const youtubeSearchTerm = `${game.gameData.name} gameplay`;
+  const youtubeSearchUrl = getYoutubeSearchUrl(youtubeSearchTerm);
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -50,28 +56,30 @@ export function LearnMoreDrawer(props: Props) {
           <div className="pb-16 text-white">
             {game.gameData.description_raw}
           </div>
-          {gameplayVideos.length > 0 ? (
-            <div className="flex flex-col gap-8">
-              <div className="font-bold text-white">Gameplay Videos:</div>
-              <ul>
-                {gameplayVideos.map((asset) => {
-                  return (
-                    <li key={asset.src}>
-                      <a href={asset.src} className="text-white underline">
-                        {asset.src}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : null}
+          <div className="flex flex-col gap-8">
+            <div className="font-bold text-white">Gameplay Videos:</div>
+            <ul>
+              <li>
+                <a
+                  rel="noopener"
+                  href={youtubeSearchUrl}
+                  className="text-white underline"
+                >
+                  Watch on YouTube
+                </a>
+              </li>
+            </ul>
+          </div>
           <div className="font-bold text-white">Platforms:</div>
           <ul className="flex flex-col gap-6">
             {game.gameData.platforms.map((platform) => {
+              const searchTerm = `${game.gameData.name} ${platform.platform.name}`;
+              const googleSearchUrl = getGoogleSearchUrl(searchTerm);
               return (
                 <li key={platform.platform.id} className="text-white underline">
-                  {platform.platform.name}
+                  <a rel="noopener" href={googleSearchUrl}>
+                    {platform.platform.name}
+                  </a>
                 </li>
               );
             })}
