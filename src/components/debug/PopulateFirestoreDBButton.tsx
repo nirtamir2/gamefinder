@@ -38,7 +38,7 @@ export function PopulateFirestoreDBButton() {
         const data: FirebaseCustomGameDataResult = {
           assets: assets.map((asset) => {
             return {
-              type: asset.type === ".mp4" ? "video" : "image",
+              type: asset.type === "mp4" ? "video" : "image",
               src: asset.publicUrl,
             };
           }),
