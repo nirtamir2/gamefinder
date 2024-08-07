@@ -42,7 +42,7 @@ export function GameplayAsset(props: Props) {
       muted
       loop
       preload="auto"
-      className="h-full object-cover"
+      className="size-full object-cover"
     >
       <source src={asset.src} type="video/mp4" />
       {fullImage}
