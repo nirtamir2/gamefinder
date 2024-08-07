@@ -166,11 +166,15 @@ export function MainPageForm() {
         id="likedGames"
         name="likedGames"
         rows={6}
-        placeholder={placeholderText}
+        placeholder={`example: ${placeholderText}`}
       />
 
-      <div className="flex w-full justify-between">
-        <button type="button" className="text-white" onClick={handleRandomText}>
+      <div className="mt-[-15] flex w-full justify-between">
+        <button
+          type="button"
+          className="mt-4 text-white"
+          onClick={handleRandomText}
+        >
           🔀 Random
         </button>
         <PlatformsDrawer
@@ -180,7 +184,7 @@ export function MainPageForm() {
           }}
         />
       </div>
-      <div className="w-full sm:max-w-56">
+      <div className="mt-4 w-full sm:max-w-56">
         <Button type="submit">Submit</Button>
       </div>
     </form>
