@@ -36,16 +36,18 @@ export function GameplayAsset(props: Props) {
       alt=""
     />
   ) : (
-    <video
-      playsInline
-      autoPlay
-      muted
-      loop
-      preload="auto"
-      className="size-full max-h-lvh object-cover"
-    >
-      <source src={asset.src} type="video/mp4" />
-      {fullImage}
-    </video>
+    <div className="relative size-full">
+      <video
+        playsInline
+        autoPlay
+        muted
+        loop
+        preload="auto"
+        className="absolute left-0 top-0 size-full object-cover py-px"
+      >
+        <source src={asset.src} type="video/mp4" />
+        {fullImage}
+      </video>
+    </div>
   );
 }
