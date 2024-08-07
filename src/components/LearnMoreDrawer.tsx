@@ -52,7 +52,7 @@ export function LearnMoreDrawer(props: Props) {
           </div>
           {gameplayVideos.length > 0 ? (
             <div className="flex flex-col gap-8">
-              <div className="font-bold text-white">Gameplay Videos</div>
+              <div className="font-bold text-white">Gameplay Videos:</div>
               <ul>
                 {gameplayVideos.map((asset) => {
                   return (
@@ -66,7 +66,7 @@ export function LearnMoreDrawer(props: Props) {
               </ul>
             </div>
           ) : null}
-          <div className="font-bold text-white">Platforms</div>
+          <div className="font-bold text-white">Platforms:</div>
           <ul className="flex flex-col gap-6">
             {game.gameData.platforms.map((platform) => {
               return (
