@@ -1,6 +1,11 @@
 import { GameHeader } from "@/components/GameHeader";
 import { Button } from "@/components/ui/Button";
 import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/Collapsable";
+import {
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -35,7 +40,7 @@ export function LearnMoreDrawer(props: Props) {
         <Button>Learn more</Button>
       </DrawerTrigger>
       <DrawerContent>
-        <div className="absolute right-4 top-4">
+        <div className="absolute right-6 top-6">
           <DrawerClose>
             <Icon name="x" height={24} width={24} className="text-white" />
             <div className="sr-only">Close</div>
@@ -52,17 +57,31 @@ export function LearnMoreDrawer(props: Props) {
             <div className="sr-only">Game details</div>
           </DrawerDescription>
         </DrawerHeader>
-        <div className="container flex flex-col gap-6 px-8 pb-16 pt-8">
-          <div className="pb-16 text-white">
-            {game.gameData.description_raw}
-          </div>
+        <div className="container flex flex-col gap-6 px-8 pb-8">
+          <Collapsible>
+            <div className="relative max-h-32 overflow-hidden">
+              <div className="pb-16 text-white">
+                {game.gameData.description_raw}
+              </div>
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent"></div>
+            </div>
+            <CollapsibleTrigger asChild>
+              <button>Read more</button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="pb-16 text-white">
+                {game.gameData.description_raw}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
           <div className="flex flex-col gap-8">
             <div className="font-bold text-white">Gameplay Videos:</div>
             <ul>
               <li>
                 <a
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   href={youtubeSearchUrl}
+                  target="_blank"
                   className="text-white underline"
                 >
                   Watch on YouTube
@@ -77,7 +96,7 @@ export function LearnMoreDrawer(props: Props) {
               const googleSearchUrl = getGoogleSearchUrl(searchTerm);
               return (
                 <li key={platform.platform.id} className="text-white underline">
-                  <a rel="noopener" href={googleSearchUrl}>
+                  <a rel="noopener noreferrer" href={googleSearchUrl} target="_blank">
                     {platform.platform.name}
                   </a>
                 </li>
