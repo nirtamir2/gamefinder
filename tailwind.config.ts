@@ -30,6 +30,7 @@ const config: Config = {
         "button-background": "hsl(var(--button-background))",
         "button-selected-background": "hsl(var(--button-selected-background))",
         "input-background": "hsl(var(--input-background))",
+        "button-background-brighter": "#27292C",
         white: "hsl(var(--white))",
       },
     },
