@@ -134,11 +134,23 @@ export function MainPageForm() {
     "Top survival horror games for VR.",
     "Best superhero games available on any platform.",
   ];
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * exampleSentences.length);
     const selectedText = exampleSentences[randomIndex] || "";
     setPlaceholderText(selectedText);
   }, []);
+
+  const handleRandomText = () => {
+    const randomIndex = Math.floor(Math.random() * exampleSentences.length);
+    const selectedText = exampleSentences[randomIndex] || "";
+    const textArea = document.querySelector(
+      "#likedGames",
+    ) as HTMLTextAreaElement;
+    if (textArea) {
+      textArea.value = selectedText;
+    }
+  };
 
   return (
     <form
@@ -156,12 +168,18 @@ export function MainPageForm() {
         rows={6}
         placeholder={placeholderText}
       />
-      <PlatformsDrawer
-        initialPlatforms={currentPlatforms}
-        onFinishSelectPlatforms={(platforms) => {
-          setCurrentPlatforms(platforms);
-        }}
-      />
+
+      <div className="flex w-full justify-between">
+        <button type="button" className="text-white" onClick={handleRandomText}>
+          🔀 Random
+        </button>
+        <PlatformsDrawer
+          initialPlatforms={currentPlatforms}
+          onFinishSelectPlatforms={(platforms) => {
+            setCurrentPlatforms(platforms);
+          }}
+        />
+      </div>
       <div className="w-full sm:max-w-56">
         <Button type="submit">Submit</Button>
       </div>
