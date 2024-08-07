@@ -18,17 +18,19 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div className="container flex min-h-screen flex-col items-center justify-center">
       <Image src={cubeImageSrc} height={278} width={278} alt="" />
       <h2 className="relative -top-8">Something went wrong!</h2>
-      <Button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset?.()
-        }
-      >
-        Try again
-      </Button>
+      <div className="w-full max-w-56">
+        <Button
+          onClick={
+            // Attempt to recover by trying to re-render the segment
+            () => reset?.()
+          }
+        >
+          Try again
+        </Button>
+      </div>
     </div>
   );
 }

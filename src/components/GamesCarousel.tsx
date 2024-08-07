@@ -1,7 +1,8 @@
+import { GameHeader } from "@/components/GameHeader";
 import { GameplayAsset } from "@/components/GameplayAsset";
+import { LearnMoreDrawer } from "@/components/LearnMoreDrawer";
 import { getGameplayAssets } from "@/components/getGameplayAssets";
 import { PlatformList } from "@/components/platform/PlatformList";
-import { Button } from "@/components/ui/Button";
 import {
   Carousel,
   CarouselContent,
@@ -42,14 +43,10 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   return null;
                 })}
                 <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
-                  <div>
-                    <span className="inline pb-4 pr-4 text-2xl font-semibold text-white">
-                      {game.gameData.name}
-                    </span>
-                    <span className="inline rounded-md bg-green-500 px-2.5 py-1 align-text-top text-sm font-bold text-black">
-                      {Math.round(game.gameData.rating * 20)}
-                    </span>
-                  </div>
+                  <GameHeader
+                    name={game.gameData.name}
+                    rating={game.gameData.rating}
+                  />
                   <div className="pt-2 text-lg text-white">
                     {game.explanation}
                   </div>
@@ -57,7 +54,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                     <PlatformList gameData={game.gameData} />
                   </div>
                   <div className="pt-8">
-                    <Button>Buy Game</Button>
+                    <LearnMoreDrawer game={game} />
                   </div>
                 </div>
               </div>
