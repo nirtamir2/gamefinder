@@ -29,20 +29,18 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           });
           return (
             <CarouselItem key={game.id}>
-              <div key={game.id} className="relative size-full">
+              <div key={game.id} className="relative block size-full sm:flex">
                 {assets.map((asset, index) => {
                   if (index === 0) {
                     return (
-                      <GameplayAsset
-                        key={asset.src}
-                        asset={asset}
-                        gameData={game.gameData}
-                      />
+                      <div key={asset.src} className="relative size-full">
+                        <GameplayAsset asset={asset} gameData={game.gameData} />
+                      </div>
                     );
                   }
                   return null;
                 })}
-                <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:p-24">
+                <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:relative sm:flex sm:flex-col sm:py-0">
                   <GameHeader
                     name={game.gameData.name}
                     rating={game.gameData.rating}
