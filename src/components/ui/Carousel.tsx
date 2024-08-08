@@ -163,18 +163,12 @@ const CarouselItem = React.forwardRef<
   HTMLDivElement,
   OmitClassName<React.HTMLAttributes<HTMLDivElement>>
 >((props, ref) => {
-  const { orientation } = useCarousel();
-
   return (
     <div
       ref={ref}
       role="group"
       aria-roledescription="slide"
-      className={clsx(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        "pt-1",
-      )}
+      className="min-w-0 shrink-0 grow-0 basis-full"
       {...props}
     />
   );
