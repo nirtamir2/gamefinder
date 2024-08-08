@@ -17,6 +17,9 @@ importers:
       '@nirtamir2/next-static-paths':
         specifier: ^0.6.0
         version: 0.6.0(next@15.0.0-rc.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711))(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-collapsible':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711)
       '@t3-oss/env-nextjs':
         specifier: ^0.11.0
         version: 0.11.0(typescript@5.5.4)(zod@3.23.8)
@@ -97,7 +100,7 @@ importers:
         specifier: ^9.8.0
         version: 9.8.0
       eslint-config-next:
-        specifier: ^15.0.0-rc.0
+        specifier: 15.0.0-rc.0
         version: 15.0.0-rc.0(eslint@9.8.0)(typescript@5.5.4)
       eslint-plugin-format:
         specifier: ^0.1.2
@@ -952,6 +955,19 @@ packages:
 
   '@radix-ui/primitive@1.1.0':
     resolution: {integrity: sha512-4Z8dn6Upk0qk4P74xBhZ6Hd/w0mPEzOOLxy4xiPXOXqjF7jZS0VAKk7/x/H6FyY2zCkYJqePf1G5KmkmNJ4RBA==}
+
+  '@radix-ui/react-collapsible@1.1.0':
+    resolution: {integrity: sha512-zQY7Epa8sTL0mq4ajSJpjgn2YmCgyrG7RsQgLp3C0LQVkG7+Tf6Pv1CeNWZLyqMjhdPkBa5Lx7wYBeSu7uCSTA==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
 
   '@radix-ui/react-compose-refs@1.1.0':
     resolution: {integrity: sha512-b4inOtiaOnYf9KWyO3jAeeCG6FeyfY6ldiEPanbUjWd+xIk5wZeHa8yVwmrJ2vderhu/BQvzCrJI0lHd+wIiqw==}
@@ -3877,6 +3893,10 @@ packages:
     resolution: {integrity: sha512-YF2kKIUzAofPMpfH6hOi2cGnv/HrUlfucspc7pDyvv7kGdqXrfj8SCl/t8owkEgKEuu8ZcRjSOxFxVLqwChZ2Q==}
     engines: {node: ^10 || ^12 || >=14}
 
+  postcss@8.4.41:
+    resolution: {integrity: sha512-TesUflQ0WKZqAvg52PWL6kHgLKP6xB6heTOdoYM0Wt2UHyxNa4K25EZZMgKns3BH1RLVbZCREPpLY0rhnNoHVQ==}
+    engines: {node: ^10 || ^12 || >=14}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -3944,11 +3964,6 @@ packages:
         optional: true
       prettier-plugin-svelte:
         optional: true
-
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   prettier@3.3.3:
     resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
@@ -5779,6 +5794,22 @@ snapshots:
 
   '@radix-ui/primitive@1.1.0': {}
 
+  '@radix-ui/react-collapsible@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.0
+      '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-id': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711))(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)
+      '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)
+      react: 19.0.0-rc-85acf2d195-20240711
+      react-dom: 19.0.0-rc-85acf2d195-20240711(react@19.0.0-rc-85acf2d195-20240711)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
+
   '@radix-ui/react-compose-refs@1.1.0(@types/react@18.3.3)(react@19.0.0-rc-85acf2d195-20240711)':
     dependencies:
       react: 19.0.0-rc-85acf2d195-20240711
@@ -6336,7 +6367,7 @@ snapshots:
       '@vue/shared': 3.4.35
       estree-walker: 2.0.2
       magic-string: 0.30.11
-      postcss: 8.4.40
+      postcss: 8.4.41
       source-map-js: 1.2.0
 
   '@vue/compiler-ssr@3.4.35':
@@ -7285,7 +7316,7 @@ snapshots:
       eslint: 9.8.0
       eslint-formatting-reporter: 0.0.0(eslint@9.8.0)
       eslint-parser-plain: 0.1.0
-      prettier: 3.3.2
+      prettier: 3.3.3
       synckit: 0.9.0
 
   eslint-plugin-github@5.0.1(@types/eslint@9.6.0)(eslint@9.8.0)(typescript@5.5.4):
@@ -9192,6 +9223,12 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
+  postcss@8.4.41:
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.0.1
+      source-map-js: 1.2.0
+
   prelude-ls@1.2.1: {}
 
   prettier-linter-helpers@1.0.0:
@@ -9210,8 +9247,6 @@ snapshots:
       prettier: 3.3.3
     optionalDependencies:
       '@trivago/prettier-plugin-sort-imports': 4.3.0(@vue/compiler-sfc@3.4.35)(prettier@3.3.3)
-
-  prettier@3.3.2: {}
 
   prettier@3.3.3: {}
 
