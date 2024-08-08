@@ -47,7 +47,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                     name={game.gameData.name}
                     rating={game.gameData.rating}
                   />
-                  <div className="text-md pt-2 leading-snug text-white">
+                  <div className="pt-2 leading-snug text-white">
                     {game.explanation}
                   </div>
                   <div className="pt-4">
