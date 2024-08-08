@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { DiscoverGameDrawerContent } from "@/components/DiscoverGameDrawerContent2";
+import { DiscoverGameDrawerContent } from "@/components/DiscoverGameDrawerContent";
 import { useGameProvider } from "@/components/providers/GameContext";
 import {
   Drawer,
