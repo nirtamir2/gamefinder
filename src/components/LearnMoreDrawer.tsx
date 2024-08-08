@@ -91,7 +91,7 @@ export function LearnMoreDrawer(props: Props) {
             </div>
           </div>
           <div className="mb-2 flex flex-col gap-4">
-            <div className="mt-4 font-bold text-white">Gameplay</div>
+            <div className="pt-4 font-bold text-white">Gameplay</div>
             <a
               rel="noopener noreferrer"
               href={youtubeSearchUrl}
@@ -101,7 +101,7 @@ export function LearnMoreDrawer(props: Props) {
               Watch on YouTube
             </a>
           </div>
-          <div className="mt-4 font-bold text-white">Available Platforms</div>
+          <div className="pt-4 font-bold text-white">Available Platforms</div>
           <ul className="flex flex-col gap-4">
             {game.gameData.platforms.map((platform) => {
               const searchTerm = `${game.gameData.name} ${platform.platform.name}`;
