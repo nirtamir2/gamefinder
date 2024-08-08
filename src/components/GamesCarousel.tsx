@@ -60,9 +60,11 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           );
         })}
       </CarouselContent>
-      <div className="absolute -left-10 top-1/2 hidden bg-green-200 md:block">
-        <CarouselPrevious />
-        <CarouselNext />
+      <div className="absolute bottom-40 left-1/2 hidden sm:block">
+        <div className="flex flex-col gap-4">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </div>
     </Carousel>
   );

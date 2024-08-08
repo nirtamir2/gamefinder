@@ -186,10 +186,8 @@ const CarouselPrevious = React.forwardRef<
       ref={ref}
       type="button"
       className={clsx(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        "size-12 rounded-full bg-button-background text-white transition-colors hover:bg-button-background-brighter disabled:pointer-events-none disabled:opacity-30",
+        orientation === "vertical" && "rotate-90",
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
@@ -212,11 +210,8 @@ const CarouselNext = React.forwardRef<
       ref={ref}
       type="button"
       className={clsx(
-        "z-10",
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        "size-12 rounded-full bg-button-background text-white transition-colors hover:bg-button-background-brighter disabled:pointer-events-none disabled:opacity-30",
+        orientation === "vertical" && "rotate-90",
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
