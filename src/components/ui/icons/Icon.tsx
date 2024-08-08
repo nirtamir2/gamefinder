@@ -1,9 +1,7 @@
 import type { SVGProps } from "react";
+import { iconSpritePath } from "@/components/ui/icons/iconSpritePath";
 // Configure this path in your tsconfig.json
 import type { IconName } from "@/components/ui/icons/name";
-
-// Be sure to configure the icon generator to output to the public folder
-const href = "/icons/sprite.svg";
 
 export function Icon({
   name,
@@ -13,7 +11,7 @@ export function Icon({
 }) {
   return (
     <svg {...props}>
-      <use href={`${href}#${name}`} />
+      <use href={`${iconSpritePath}#${name}`} />
     </svg>
   );
 }
