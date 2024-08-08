@@ -15,7 +15,7 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
   return (
     <main className="container min-h-dvh">
       <div className="fixed left-0 top-0 z-10 w-full bg-gradient-to-b from-background to-transparent p-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-4">
           <DiscoverGamesDrawer
             triggerAsChild
             trigger={<IconButton iconName="settings">Modify search</IconButton>}

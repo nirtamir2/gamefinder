@@ -15,7 +15,7 @@ export const IconButton = forwardRef<
       ref={ref}
       type={type}
       {...restProps}
-      className="mt-4 space-x-4 rounded-lg"
+      className="space-x-4 rounded-lg"
     >
       <Icon
         name={iconName}
