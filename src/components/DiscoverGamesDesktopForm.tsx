@@ -5,7 +5,13 @@ import { useGameProvider } from "@/components/providers/GameContext";
 import { Icon } from "@/components/ui/icons/Icon";
 
 export function DiscoverGamesDesktopForm() {
-  const { updateSearchParameters, genres } = useGameProvider();
+  const { platforms, updateSearchParameters, genres } = useGameProvider();
+  const [likedGames, setLikedGames] = useState<string>("");
+  const [currentPlatforms, setCurrentPlatforms] =
+    useState<Array<string>>(platforms);
+  const [placeholderText] = useState<string>(
+    `example: ${generateRandomPrompt()}`,
+  );
 
   function handleSubmit({
     likedGames,
@@ -20,16 +26,6 @@ export function DiscoverGamesDesktopForm() {
       genres,
     });
   }
-
-  const [likedGames, setLikedGames] = useState<string>("");
-  const { platforms } = useGameProvider();
-
-  const [currentPlatforms, setCurrentPlatforms] =
-    useState<Array<string>>(platforms);
-
-  const [placeholderText] = useState<string>(
-    `example: ${generateRandomPrompt()}`,
-  );
 
   return (
     <form
