@@ -63,7 +63,7 @@ export function DiscoverGamesDesktopForm() {
           </button>
         </div>
       </div>
-      <div className="absolute left-full w-96">
+      <div className="absolute left-full w-96 pl-4">
         <PlatformsDrawer
           initialPlatforms={platforms}
           onFinishSelectPlatforms={(platforms) => {
