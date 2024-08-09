@@ -33,7 +33,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                 key={game.id}
                 className="size-full xl:flex xl:justify-center"
               >
-                <div className="relative size-full xl:max-w-[450px]">
+                <div className="relative size-full xl:max-w-desktop-carousel">
                   {assets.map((asset, index) => {
                     if (index === 0) {
                       return (
@@ -70,7 +70,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
         })}
       </CarouselContent>
       <div className="absolute bottom-40 hidden w-full justify-center xl:flex">
-        <div className="relative h-0 w-[450px] bg-red-400">
+        <div className="relative h-0 w-desktop-carousel bg-red-400">
           <div className="absolute -right-20 bottom-0">
             <div className="flex flex-col gap-4">
               <CarouselPrevious />

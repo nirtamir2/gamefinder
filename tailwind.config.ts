@@ -14,6 +14,13 @@ const config: Config = {
       },
     },
     extend: {
+      maxWidth: {
+        "desktop-carousel": "28rem",
+      },
+      width: {
+        "desktop-header": "32rem",
+        "desktop-carousel": "28rem",
+      },
       colors: {
         primary: {
           DEFAULT: "hsl(var(--primary))",

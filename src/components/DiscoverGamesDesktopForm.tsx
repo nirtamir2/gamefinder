@@ -29,7 +29,7 @@ export function DiscoverGamesDesktopForm() {
 
   return (
     <form
-      className="relative flex w-[500px] items-center gap-8"
+      className="relative flex w-desktop-header items-center gap-8"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit({ likedGames, currentPlatforms });
