@@ -29,7 +29,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           });
           return (
             <CarouselItem key={game.id}>
-              <div key={game.id} className="relative block size-full sm:flex">
+              <div key={game.id} className="relative block size-full lg:flex">
                 {assets.map((asset, index) => {
                   if (index === 0) {
                     return (
@@ -40,7 +40,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                   }
                   return null;
                 })}
-                <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 sm:relative sm:flex sm:flex-col sm:py-40">
+                <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 lg:relative lg:flex lg:flex-col lg:py-40">
                   <GameHeader
                     name={game.gameData.name}
                     rating={game.gameData.rating}
@@ -60,7 +60,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           );
         })}
       </CarouselContent>
-      <div className="absolute bottom-40 left-1/2 hidden sm:block">
+      <div className="absolute bottom-40 left-1/2 hidden lg:block">
         <div className="flex flex-col gap-4">
           <CarouselPrevious />
           <CarouselNext />

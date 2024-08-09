@@ -60,7 +60,7 @@ export function DiscoverGameDrawerContent(props: {
             }}
           />
         </div>
-        <div className="w-full sm:max-w-56">
+        <div className="w-full lg:max-w-56">
           <Button type="submit">Submit</Button>
         </div>
       </form>

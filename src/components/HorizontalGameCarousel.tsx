@@ -30,7 +30,7 @@ export function HorizontalGameCarousel(props: {
           );
         })}
       </CarouselContent>
-      <div className="absolute -left-10 top-1/2 hidden bg-green-200 md:block">
+      <div className="absolute -left-10 top-1/2 hidden bg-green-200 lg:block">
         <CarouselPrevious />
         <CarouselNext />
       </div>
