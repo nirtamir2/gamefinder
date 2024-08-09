@@ -15,8 +15,8 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
   const { games } = props;
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
-    <main className="container flex min-h-dvh flex-col lg:max-w-full">
-      <div className="left-0 top-0 z-10 h-0 w-full lg:sticky">
+    <main className="container flex min-h-dvh flex-col xl:max-w-full">
+      <div className="left-0 top-0 z-10 h-0 w-full xl:sticky">
         {isDesktop ? (
           <div className="flex w-full justify-center bg-black/20 bg-gradient-to-b from-background to-transparent pt-12">
             <DiscoverGamesDesktopForm />
