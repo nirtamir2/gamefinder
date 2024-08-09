@@ -33,13 +33,13 @@ export function DiscoverGamesDesktopForm() {
 
   return (
     <form
-      className="flex items-center gap-8"
+      className="relative flex w-[500px] items-center gap-8"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit({ likedGames, currentPlatforms });
       }}
     >
-      <div className="group relative flex-1">
+      <div className="group relative w-full">
         <input
           required
           className="w-full resize-none appearance-none rounded-full bg-button-background py-4 pl-6 pr-14 text-white transition duration-200 placeholder:text-gray-500 focus:bg-button-background-brighter"
@@ -63,7 +63,7 @@ export function DiscoverGamesDesktopForm() {
           </button>
         </div>
       </div>
-      <div className="flex-1">
+      <div className="absolute left-full w-96">
         <PlatformsDrawer
           initialPlatforms={platforms}
           onFinishSelectPlatforms={(platforms) => {

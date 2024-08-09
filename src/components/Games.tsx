@@ -18,7 +18,7 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
     <main className="container flex min-h-dvh flex-col lg:max-w-full">
       <div className="left-0 top-0 z-10 h-0 w-full lg:sticky">
         {isDesktop ? (
-          <div className="pt-12">
+          <div className="flex w-full justify-center bg-black/20 bg-gradient-to-b from-background to-transparent pt-12">
             <DiscoverGamesDesktopForm />
           </div>
         ) : (
