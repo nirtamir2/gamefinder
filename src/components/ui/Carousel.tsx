@@ -5,6 +5,7 @@ import clsx from "clsx";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
+import { useHotkeys } from "react-hotkeys-hook";
 import type { OmitClassName } from "@/components/ui/OmitClassName";
 
 type CarouselApi = UseEmblaCarouselType[1];
@@ -30,7 +31,7 @@ type CarouselContextProps = {
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
-function useCarousel() {
+export function useCarousel() {
   const context = React.useContext(CarouselContext);
 
   if (!context) {
@@ -181,6 +182,10 @@ const CarouselPrevious = React.forwardRef<
 >((props, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
+  useHotkeys(["ArrowUp"], () => {
+    scrollPrev();
+  });
+
   return (
     <button
       ref={ref}
@@ -204,6 +209,10 @@ const CarouselNext = React.forwardRef<
   OmitClassName<React.ComponentProps<"button">>
 >((props, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
+
+  useHotkeys(["ArrowDown"], () => {
+    scrollNext();
+  });
 
   return (
     <button
