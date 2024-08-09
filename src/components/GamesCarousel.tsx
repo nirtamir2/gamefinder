@@ -29,30 +29,39 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           });
           return (
             <CarouselItem key={game.id}>
-              <div key={game.id} className="relative block size-full lg:flex">
-                {assets.map((asset, index) => {
-                  if (index === 0) {
-                    return (
-                      <div key={asset.src} className="relative size-full">
-                        <GameplayAsset asset={asset} gameData={game.gameData} />
+              <div
+                key={game.id}
+                className="size-full lg:flex lg:justify-center"
+              >
+                <div className="relative size-full lg:max-w-[450px]">
+                  {assets.map((asset, index) => {
+                    if (index === 0) {
+                      return (
+                        <GameplayAsset
+                          key={asset.src}
+                          asset={asset}
+                          gameData={game.gameData}
+                        />
+                      );
+                    }
+                    return null;
+                  })}
+                  <div className="absolute right-0 z-10 w-full max-lg:bottom-0 lg:top-0 lg:size-0">
+                    <div className="z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 lg:relative lg:flex lg:w-96 lg:flex-col lg:py-40">
+                      <GameHeader
+                        name={game.gameData.name}
+                        rating={game.gameData.rating}
+                      />
+                      <div className="pt-2 leading-snug text-white">
+                        {game.explanation}
                       </div>
-                    );
-                  }
-                  return null;
-                })}
-                <div className="absolute bottom-0 z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 lg:relative lg:flex lg:flex-col lg:py-40">
-                  <GameHeader
-                    name={game.gameData.name}
-                    rating={game.gameData.rating}
-                  />
-                  <div className="pt-2 leading-snug text-white">
-                    {game.explanation}
-                  </div>
-                  <div className="pt-4">
-                    <PlatformList gameData={game.gameData} />
-                  </div>
-                  <div className="pt-8">
-                    <LearnMoreDrawer game={game} />
+                      <div className="pt-4">
+                        <PlatformList gameData={game.gameData} />
+                      </div>
+                      <div className="pt-8">
+                        <LearnMoreDrawer game={game} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

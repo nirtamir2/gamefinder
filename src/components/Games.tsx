@@ -13,9 +13,9 @@ import { useGamesQuery } from "@/react-query/useGamesQuery";
 
 function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
   const { games } = props;
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
-    <main className="container flex min-h-dvh flex-col lg:max-w-screen-lg">
+    <main className="container flex min-h-dvh flex-col lg:max-w-full">
       <div className="left-0 top-0 z-10 h-0 w-full lg:sticky">
         {isDesktop ? (
           <div className="pt-12">
