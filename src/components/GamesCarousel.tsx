@@ -69,10 +69,14 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           );
         })}
       </CarouselContent>
-      <div className="absolute bottom-40 left-1/2 hidden lg:block">
-        <div className="flex flex-col gap-4">
-          <CarouselPrevious />
-          <CarouselNext />
+      <div className="absolute bottom-40 hidden w-full justify-center lg:flex">
+        <div className="relative h-0 w-[450px] bg-red-400">
+          <div className="absolute -right-20 bottom-0">
+            <div className="flex flex-col gap-4">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
+          </div>
         </div>
       </div>
     </Carousel>
