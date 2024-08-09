@@ -44,8 +44,8 @@ const DrawerContent = React.forwardRef<
       className="fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-3xl border border-transparent bg-background"
       {...props}
     >
-      <div className="max-h-[85svh] overflow-auto">
-        <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-transparent" />
+      <div className="max-h-drawer overflow-auto">
+        <div className="mx-auto mt-4 h-2 w-24 rounded-full bg-transparent" />
         {children}
       </div>
     </DrawerPrimitive.Content>
