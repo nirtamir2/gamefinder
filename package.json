@@ -34,6 +34,7 @@
     "ai": "^3.3.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.1.8",
+    "embla-carousel-wheel-gestures": "^8.0.1",
     "firebase": "^10.12.5",
     "jiti": "^1.21.6",
     "lottie-react": "^2.4.0",

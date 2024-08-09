@@ -1,3 +1,4 @@
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { GameHeader } from "@/components/GameHeader";
 import { GameplayAsset } from "@/components/GameplayAsset";
 import { LearnMoreDrawer } from "@/components/LearnMoreDrawer";
@@ -21,6 +22,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
         align: "start",
       }}
       orientation="vertical"
+      plugins={[WheelGesturesPlugin()]}
     >
       <CarouselContent>
         {games.map((game) => {
