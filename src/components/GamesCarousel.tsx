@@ -33,9 +33,9 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
             <CarouselItem key={game.id}>
               <div
                 key={game.id}
-                className="size-full xl:flex xl:justify-center"
+                className="size-full xl:flex xl:items-center xl:justify-center"
               >
-                <div className="relative size-full xl:max-w-desktop-carousel">
+                <div className="relative size-full xl:max-h-desktop-video xl:max-w-desktop-carousel">
                   {assets.map((asset, index) => {
                     if (index === 0) {
                       return (

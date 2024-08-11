@@ -16,6 +16,7 @@ const config: Config = {
     extend: {
       maxHeight: {
         drawer: "85svh",
+        "desktop-video": "75rem",
       },
       maxWidth: {
         "desktop-carousel": "28rem",

@@ -47,7 +47,7 @@ export function GameplayAsset(props: Props) {
             muted
             loop
             preload="auto"
-            className="absolute left-0 top-0 size-full object-cover py-px xl:rounded-xl"
+            className="absolute left-0 top-0 aspect-[9/16] size-full object-cover py-px xl:rounded-xl"
           >
             <source src={asset.src} type="video/mp4" />
             {fullImage}
