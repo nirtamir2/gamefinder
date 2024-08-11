@@ -168,7 +168,7 @@ const CarouselItem = React.forwardRef<
       ref={ref}
       role="group"
       aria-roledescription="slide"
-      className="min-w-0 shrink-0 grow-0 basis-full"
+      className="flex min-w-0 shrink-0 grow-0 basis-full items-center"
       {...props}
     />
   );
