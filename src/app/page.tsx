@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center">
       <div className="container relative w-full px-8 pb-32">
-        <div className="flex justify-center">
+        <div className="flex justify-center md:hidden">
           <Image src={cubeImageSrc} height={200} width={200} alt="" />
         </div>
         <div className="relative -top-12">
