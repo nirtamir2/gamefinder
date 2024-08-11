@@ -23,7 +23,7 @@ export const IconButton = forwardRef<
         width={24}
         className="inline align-text-top text-white"
       />
-      <div className="inline text-white underline">{children}</div>
+      <div className="inline text-sm text-white underline">{children}</div>
     </button>
   );
 });
