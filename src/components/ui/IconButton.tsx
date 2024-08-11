@@ -19,9 +19,9 @@ export const IconButton = forwardRef<
     >
       <Icon
         name={iconName}
-        height={24}
-        width={24}
-        className="inline align-text-top text-white"
+        height={20}
+        width={20}
+        className="inline align-middle text-white"
       />
       <div className="inline text-sm text-white underline">{children}</div>
     </button>
