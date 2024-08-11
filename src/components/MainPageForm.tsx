@@ -53,7 +53,7 @@ export function MainPageForm() {
           }}
         />
       </div>
-      <div className="hidden w-full pt-4 xl:max-w-56">
+      <div className="w-full pt-4 xl:hidden xl:max-w-56">
         <Button type="submit">Submit</Button>
       </div>
     </form>
