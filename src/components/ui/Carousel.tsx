@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
+import { useEffect } from "react";
 import clsx from "clsx";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import { useHotkeys } from "react-hotkeys-hook";
 import type { OmitClassName } from "@/components/ui/OmitClassName";
 
 type CarouselApi = UseEmblaCarouselType[1];
@@ -77,17 +77,30 @@ const Carousel = React.forwardRef<
     }, [api]);
 
     const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "ArrowLeft") {
+      (event: KeyboardEvent) => {
+        if (
+          (orientation === "horizontal" && event.key === "ArrowLeft") ||
+          (orientation === "vertical" && event.key === "ArrowUp")
+        ) {
           event.preventDefault();
           scrollPrev();
-        } else if (event.key === "ArrowRight") {
+        } else if (
+          (orientation === "horizontal" && event.key === "ArrowRight") ||
+          (orientation === "vertical" && event.key === "ArrowDown")
+        ) {
           event.preventDefault();
           scrollNext();
         }
       },
-      [scrollPrev, scrollNext],
+      [orientation, scrollPrev, scrollNext],
     );
+
+    useEffect(() => {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        return document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [handleKeyDown]);
 
     React.useEffect(() => {
       if (!api || !setApi) {
@@ -131,7 +144,6 @@ const Carousel = React.forwardRef<
           className="relative"
           role="region"
           aria-roledescription="carousel"
-          onKeyDownCapture={handleKeyDown}
           {...props}
         >
           {children}
@@ -182,10 +194,6 @@ const CarouselPrevious = React.forwardRef<
 >((props, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
-  useHotkeys(["ArrowUp"], () => {
-    scrollPrev();
-  });
-
   return (
     <button
       ref={ref}
@@ -209,10 +217,6 @@ const CarouselNext = React.forwardRef<
   OmitClassName<React.ComponentProps<"button">>
 >((props, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
-
-  useHotkeys(["ArrowDown"], () => {
-    scrollNext();
-  });
 
   return (
     <button
