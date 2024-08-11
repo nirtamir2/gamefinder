@@ -26,7 +26,7 @@ export function GameplayAsset(props: Props) {
     );
 
   return (
-    <div className="size-full xl:py-40">
+    <div className="size-full xl:pb-24 xl:pt-44">
       <div className="relative size-full">
         {asset.type === "image" ? (
           <Image
