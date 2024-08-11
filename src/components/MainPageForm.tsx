@@ -14,6 +14,8 @@ export function MainPageForm() {
     useState<Array<string>>(platforms);
   const [placeholderText, setPlaceholderText] = useState<string>("");
 
+  const [likedGames, setLikedGames] = useState("");
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * exampleSentences.length);
     const selectedText = exampleSentences[randomIndex] || "";
@@ -25,31 +27,35 @@ export function MainPageForm() {
       className="flex flex-col items-center justify-center gap-4"
       onSubmit={(e) => {
         e.preventDefault();
-        const likedGames = e.currentTarget["likedGames"].value as string;
         updateSearchParameters({ likedGames: [likedGames], platforms, genres });
       }}
     >
-      <div className="flex justify-center md:hidden">
+      <div className="flex w-full justify-center md:hidden">
         <TextArea
           required
           id="likedGames"
           name="likedGames"
           rows={6}
           placeholder={`"${placeholderText}"`}
+          onChange={(e) => {
+            setLikedGames(e.target.value);
+          }}
         />
       </div>
 
       <div className="hidden w-full justify-center md:flex">
         <Input
           required
-          id="likedGames"
-          name="likedGames"
-          type="text"
+          id="likedGamesInput"
+          name="likedGamesInput"
           placeholder={`"${placeholderText}"`}
+          onChange={(e) => {
+            setLikedGames(e.target.value);
+          }}
         />
       </div>
 
-      <div className="mt-[-15] flex w-full justify-center">
+      <div className="mt-[10] flex w-full justify-center">
         <PlatformsDrawer
           initialPlatforms={currentPlatforms}
           onFinishSelectPlatforms={(platforms) => {
@@ -58,7 +64,7 @@ export function MainPageForm() {
         />
       </div>
 
-      <div className="mt-4 w-full sm:max-w-56">
+      <div className="mt-4 w-full sm:max-w-56 md:hidden">
         <Button type="submit">Submit</Button>
       </div>
     </form>

@@ -18,7 +18,7 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <div className="container flex min-h-screen flex-col items-center justify-center">
+    <div className="container flex min-h-dvh flex-col items-center justify-center">
       <Image src={cubeImageSrc} height={278} width={278} alt="" />
       <h2 className="relative -top-8">Something went wrong!</h2>
       <div className="w-full max-w-56">

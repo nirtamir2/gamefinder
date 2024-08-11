@@ -7,6 +7,7 @@ export type IconName =
   | "macos"
   | "nintendo-switch"
   | "playstation"
+  | "search"
   | "settings"
   | "v"
   | "windows"

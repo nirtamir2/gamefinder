@@ -10,7 +10,7 @@ export function GameplayAsset(props: Props) {
   const { asset, gameData } = props;
   const fullImage =
     gameData.background_image == null ? (
-      <div className="size-full bg-background"></div>
+      <div className="size-full bg-background" />
     ) : (
       <Image
         fill
@@ -18,36 +18,42 @@ export function GameplayAsset(props: Props) {
           objectFit: "cover",
           userSelect: "none",
         }}
+        className="xl:rounded-xl"
         sizes="100vw"
         src={gameData.background_image_additional ?? gameData.background_image}
         alt=""
       />
     );
 
-  return asset.type === "image" ? (
-    <Image
-      fill
-      style={{
-        objectFit: "cover",
-        userSelect: "none",
-      }}
-      sizes="100vw"
-      src={asset.src}
-      alt=""
-    />
-  ) : (
-    <div className="relative size-full">
-      <video
-        playsInline
-        autoPlay
-        muted
-        loop
-        preload="auto"
-        className="absolute left-0 top-0 size-full object-cover py-px"
-      >
-        <source src={asset.src} type="video/mp4" />
-        {fullImage}
-      </video>
+  return (
+    <div className="size-full xl:py-40">
+      <div className="relative size-full">
+        {asset.type === "image" ? (
+          <Image
+            fill
+            style={{
+              objectFit: "cover",
+              userSelect: "none",
+            }}
+            sizes="100vw"
+            className="xl:rounded-xl"
+            src={asset.src}
+            alt=""
+          />
+        ) : (
+          <video
+            playsInline
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            className="absolute left-0 top-0 size-full object-cover py-px xl:rounded-xl"
+          >
+            <source src={asset.src} type="video/mp4" />
+            {fullImage}
+          </video>
+        )}
+      </div>
     </div>
   );
 }

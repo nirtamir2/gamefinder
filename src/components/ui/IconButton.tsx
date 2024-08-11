@@ -15,15 +15,12 @@ export const IconButton = forwardRef<
       ref={ref}
       type={type}
       {...restProps}
-      className="mt-4 space-x-4 rounded-lg"
+      className="flex items-center space-x-4 rounded-lg"
     >
-      <Icon
-        name={iconName}
-        height={24}
-        width={24}
-        className="inline align-text-top text-white"
-      />
-      <div className="inline text-white underline">{children}</div>
+      <Icon name={iconName} height={20} width={20} className="text-white" />
+      <div className="text-white underline" style={{ fontSize: "13px" }}>
+        {children}
+      </div>
     </button>
   );
 });

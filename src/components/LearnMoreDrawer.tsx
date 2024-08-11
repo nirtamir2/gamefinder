@@ -1,10 +1,8 @@
 import { useState } from "react";
+import { clsx } from "clsx";
 import { GameHeader } from "@/components/GameHeader";
 import { Button } from "@/components/ui/Button";
-import {
-  Collapsible,
-  CollapsibleTrigger,
-} from "@/components/ui/Collapsable";
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/Collapsable";
 import {
   Drawer,
   DrawerClose,
@@ -27,16 +25,39 @@ function getGoogleSearchUrl(searchTerm: string) {
   return `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
 }
 
+function CollapsibleDescription(props: { description: string }) {
+  const { description } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <div className="flex flex-col">
+        <div className="relative flex-1 overflow-hidden">
+          <div
+            className={clsx(
+              `text-white transition-all duration-300`,
+              isOpen ? "max-h-full" : "max-h-32",
+            )}
+          >
+            {description}
+          </div>
+          {isOpen ? null : (
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
+          )}
+        </div>
+        <CollapsibleTrigger className="text-left underline">
+          {isOpen ? "Read less" : "Read more"}
+        </CollapsibleTrigger>
+      </div>
+    </Collapsible>
+  );
+}
+
 export function LearnMoreDrawer(props: Props) {
   const { game } = props;
-  const [isOpen, setIsOpen] = useState(false);
 
   const youtubeSearchTerm = `${game.gameData.name} gameplay`;
   const youtubeSearchUrl = getYoutubeSearchUrl(youtubeSearchTerm);
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <Drawer>
@@ -63,53 +84,33 @@ export function LearnMoreDrawer(props: Props) {
               <div className="sr-only">Game details</div>
             </DrawerDescription>
 
-            <Collapsible>
-              <div className="flex flex-col">
-                <div className="relative flex-1 overflow-hidden">
-                  <div
-                    className={`text-white transition-all duration-300 ${isOpen ? "max-h-full" : "max-h-32"}`}
-                  >
-                    {game.gameData.description_raw}
-                  </div>
-                  {isOpen ? null : (
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent"></div>
-                  )}
-                </div>
-                <CollapsibleTrigger asChild>
-                  <button
-                    className="mt-3 text-left underline"
-                    onClick={handleToggle}
-                  >
-                    {isOpen ? "Read less" : "Read more"}
-                  </button>
-                </CollapsibleTrigger>
-              </div>
-            </Collapsible>
+            <div className="pt-3">
+              <CollapsibleDescription
+                description={game.gameData.description_raw}
+              />
+            </div>
           </div>
           <div className="mb-2 flex flex-col gap-4">
-            <div className="mt-4 font-bold text-white">Gameplay</div>
-            <ul>
-              <li className="mt-0">
-                <a
-                  rel="noopener noreferrer"
-                  href={youtubeSearchUrl}
-                  target="_blank"
-                  className="text-white underline"
-                >
-                  Watch on YouTube
-                </a>
-              </li>
-            </ul>
+            <div className="pt-4 font-bold text-white">Gameplay</div>
+            <a
+              rel="noopener noreferrer"
+              href={youtubeSearchUrl}
+              target="_blank"
+              className="text-white underline"
+            >
+              Watch on YouTube
+            </a>
           </div>
-          <div className="mt-4 font-bold text-white">Available Platforms</div>
+          <div className="pt-4 font-bold text-white">Available Platforms</div>
           <ul className="flex flex-col gap-4">
             {game.gameData.platforms.map((platform) => {
               const searchTerm = `${game.gameData.name} ${platform.platform.name}`;
               const googleSearchUrl = getGoogleSearchUrl(searchTerm);
               return (
-                <li key={platform.platform.id} className="text-white underline">
+                <li key={platform.platform.id}>
                   <a
                     rel="noopener noreferrer"
+                    className="text-white underline"
                     href={googleSearchUrl}
                     target="_blank"
                   >
