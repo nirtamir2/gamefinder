@@ -5,12 +5,17 @@ import { generateRandomPrompt } from "@/components/generateRandomPrompt";
 import { PlatformsDrawer } from "@/components/platform/PlatformsDrawer";
 import { useGameProvider } from "@/components/providers/GameContext";
 import { Button } from "@/components/ui/Button";
-import { TextArea } from "@/components/ui/TextArea";
+import { SearchInput } from "@/components/ui/SearchInput";
 
 export function MainPageForm() {
-  const { platforms, updateSearchParameters, genres } = useGameProvider();
-  const [currentPlatforms, setCurrentPlatforms] =
-    useState<Array<string>>(platforms);
+  const {
+    platforms: searchParamsPlatforms,
+    updateSearchParameters,
+    genres,
+  } = useGameProvider();
+  const [currentPlatforms, setCurrentPlatforms] = useState<Array<string>>(
+    searchParamsPlatforms,
+  );
 
   const [placeholderText] = useState<string>(
     `example: ${generateRandomPrompt()}`,
@@ -22,29 +27,25 @@ export function MainPageForm() {
       className="flex flex-col items-center justify-center gap-4"
       onSubmit={(e) => {
         e.preventDefault();
-        updateSearchParameters({ likedGames: [likedGames], platforms, genres });
+        updateSearchParameters({
+          likedGames: [likedGames],
+          platforms: currentPlatforms,
+          genres,
+        });
       }}
     >
-      <TextArea
+      <SearchInput
         required
         id="likedGames"
         name="likedGames"
         value={likedGames}
-        rows={6}
         placeholder={placeholderText}
         onChange={(e) => {
           setLikedGames(e.target.value);
         }}
       />
 
-      <div className="flex w-full justify-between pt-4">
-        <button
-          type="button"
-          className="text-white"
-          onClick={() => setLikedGames(generateRandomPrompt())}
-        >
-          🔀 Random
-        </button>
+      <div className="flex w-full justify-center pt-4">
         <PlatformsDrawer
           initialPlatforms={currentPlatforms}
           onFinishSelectPlatforms={(platforms) => {
@@ -52,7 +53,7 @@ export function MainPageForm() {
           }}
         />
       </div>
-      <div className="w-full pt-4 xl:max-w-56">
+      <div className="hidden w-full pt-4 xl:max-w-56">
         <Button type="submit">Submit</Button>
       </div>
     </form>

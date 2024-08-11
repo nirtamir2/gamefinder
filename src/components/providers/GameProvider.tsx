@@ -47,9 +47,9 @@ export const GameProvider = ({
       });
 
       const searchParams = searchParamsSchemaSerializer({
-        likedGames: stringArraySchema.parseServerSide(likedGames),
-        genres: stringArraySchema.parseServerSide(genres),
-        platforms: stringArraySchema.parseServerSide(platforms),
+        likedGames,
+        genres,
+        platforms,
       });
 
       const url = `${pathFor("/discover")}${searchParams}`;

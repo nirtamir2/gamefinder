@@ -2,7 +2,6 @@ import { useState } from "react";
 import { generateRandomPrompt } from "@/components/generateRandomPrompt";
 import { PlatformsDrawer } from "@/components/platform/PlatformsDrawer";
 import { useGameProvider } from "@/components/providers/GameContext";
-import { Button } from "@/components/ui/Button";
 import { TextArea } from "@/components/ui/TextArea";
 
 export function DiscoverGameDrawerContent(props: {
@@ -44,15 +43,6 @@ export function DiscoverGameDrawerContent(props: {
           }}
         />
         <div className="flex w-full justify-between pt-4">
-          <button
-            type="button"
-            className="text-white"
-            onClick={() => {
-              setLikedGames(generateRandomPrompt());
-            }}
-          >
-            🔀 Random
-          </button>
           <PlatformsDrawer
             initialPlatforms={platforms}
             onFinishSelectPlatforms={(platforms) => {
@@ -60,9 +50,9 @@ export function DiscoverGameDrawerContent(props: {
             }}
           />
         </div>
-        <div className="w-full xl:max-w-56">
-          <Button type="submit">Submit</Button>
-        </div>
+        <button className="hidden" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
