@@ -58,6 +58,8 @@ const Carousel = React.forwardRef<
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
 
+    const carouselContainerRef = React.useRef<HTMLDivElement | null>(null);
+
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return;
@@ -77,15 +79,19 @@ const Carousel = React.forwardRef<
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "ArrowLeft") {
-          event.preventDefault();
-          scrollPrev();
-        } else if (event.key === "ArrowRight") {
-          event.preventDefault();
-          scrollNext();
+        if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+          if (canScrollNext) {
+            event.preventDefault();
+            scrollNext();
+          }
+        } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+          if (canScrollPrev) {
+            event.preventDefault();
+            scrollPrev();
+          }
         }
       },
-      [scrollPrev, scrollNext],
+      [scrollPrev, scrollNext, canScrollPrev, canScrollNext],
     );
 
     React.useEffect(() => {
@@ -110,27 +116,42 @@ const Carousel = React.forwardRef<
       };
     }, [api, onSelect]);
 
+    // Automatically set focus to the carousel container when it mounts
+    React.useEffect(() => {
+      if (carouselContainerRef.current) {
+        carouselContainerRef.current.focus();
+      }
+    }, []);
+
+    // Memoize the context value to prevent unnecessary re-renders
+    const contextValue = React.useMemo(() => ({
+      carouselRef,
+      api,
+      opts,
+      orientation: orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+      scrollPrev,
+      scrollNext,
+      canScrollPrev,
+      canScrollNext,
+    }), [carouselRef, api, opts, orientation, scrollPrev, scrollNext, canScrollPrev, canScrollNext]);
+
     return (
-      <CarouselContext.Provider
-        // eslint-disable-next-line @eslint-react/no-unstable-context-value,react/jsx-no-constructed-context-values
-        value={{
-          carouselRef,
-          api,
-          opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-          scrollPrev,
-          scrollNext,
-          canScrollPrev,
-          canScrollNext,
-        }}
-      >
+      <CarouselContext.Provider value={contextValue}>
         <div
-          ref={ref}
-          className="relative"
+          ref={(node) => {
+            carouselContainerRef.current = node;
+            if (typeof ref === "function") {
+              ref(node);
+            } else if (ref) {
+              (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+                node;
+            }
+          }}
+          className="relative focus:outline-none" // Tailwind class to remove outline
           role="region"
           aria-roledescription="carousel"
-          onKeyDownCapture={handleKeyDown}
+          tabIndex={0} // Necessary for focus, but might need to suppress warning if it's still an issue
+          onKeyDown={handleKeyDown}
           {...props}
         >
           {children}

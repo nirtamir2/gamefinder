@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import LoadingPage from "@/app/debug/loading/page";
 import ErrorPage from "@/app/discover/error";
+import cubeImageSrc from "@/assets/cube.png";
 import { DiscoverGamesDesktopForm } from "@/components/DiscoverGamesDesktopForm";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
 import { GamesCarousel } from "@/components/GamesCarousel";
@@ -18,8 +20,18 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
     <main className="container flex min-h-dvh flex-col xl:max-w-full">
       <div className="left-0 top-0 z-10 h-0 w-full xl:sticky">
         {isDesktop ? (
-          <div className="flex w-full justify-center bg-black/20 bg-gradient-to-b from-background to-transparent pt-12">
-            <DiscoverGamesDesktopForm />
+          <div className="flex w-full items-center justify-between">
+            <a href="/" className="flex-shrink-0">
+              <Image
+                src={cubeImageSrc}
+                height={133}
+                width={133}
+                alt="gameplays.io logo"
+              />
+            </a>
+            <div className="flex w-full justify-center bg-black/20 mr-32">
+              <DiscoverGamesDesktopForm />
+            </div>
           </div>
         ) : (
           <div className="flex justify-center bg-gradient-to-b from-background to-transparent px-8 pb-8 pt-12">
