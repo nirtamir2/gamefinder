@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { generateRandomPrompt } from "@/components/generateRandomPrompt";
+import { useMediaQuery } from "@/components/hooks/useMediaQuery";
 import { PlatformsDrawer } from "@/components/platform/PlatformsDrawer";
 import { useGameProvider } from "@/components/providers/GameContext";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
+import { TextArea } from "@/components/ui/TextArea";
 
 export function MainPageForm() {
   const {
@@ -16,6 +18,8 @@ export function MainPageForm() {
   const [currentPlatforms, setCurrentPlatforms] = useState<Array<string>>(
     searchParamsPlatforms,
   );
+
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const [placeholderText] = useState<string>(
     `example: ${generateRandomPrompt()}`,
@@ -34,16 +38,30 @@ export function MainPageForm() {
         });
       }}
     >
-      <SearchInput
-        required
-        id="likedGames"
-        name="likedGames"
-        value={likedGames}
-        placeholder={placeholderText}
-        onChange={(e) => {
-          setLikedGames(e.target.value);
-        }}
-      />
+      {isDesktop ? (
+        <SearchInput
+          required
+          id="likedGames"
+          name="likedGames"
+          value={likedGames}
+          placeholder={placeholderText}
+          onChange={(e) => {
+            setLikedGames(e.target.value);
+          }}
+        />
+      ) : (
+        <TextArea
+          required
+          id="likedGames"
+          name="likedGames"
+          value={likedGames}
+          rows={6}
+          placeholder={placeholderText}
+          onChange={(e) => {
+            setLikedGames(e.target.value);
+          }}
+        />
+      )}
 
       <div className="flex w-full justify-center pt-4">
         <PlatformsDrawer
