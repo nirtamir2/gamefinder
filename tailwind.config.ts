@@ -40,7 +40,6 @@ const config: Config = {
         background: "hsl(var(--background))",
         overlay: "hsl(var(--overlay))",
         rating: "hsl(var(--rating))",
-        "text-on-primary": "hsl(var(--text-on-primary))",
         "secondary-button-text": "hsl(var(--secondary-button-text))",
         "button-background": "hsl(var(--button-background))",
         "button-selected-background": "hsl(var(--button-selected-background))",
