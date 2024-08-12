@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/Carousel";
 import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
-const arrowsTopPosition = `calc(var(--desktop-header-height) + (100vh - var(--desktop-header-height) - var(--desktop-video-max-height)) / 2 + var(--desktop-video-max-height))`;
+const arrowsBottomPosition = `calc(max(2rem, 100vh - (var(--desktop-header-height) + (100vh - var(--desktop-header-height) - var(--desktop-video-max-height)) / 2 + var(--desktop-video-max-height))))`;
 
 export function GamesCarousel(props: { games: FetchGameDataResult }) {
   const { games } = props;
@@ -78,7 +78,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
       <div
         className="absolute hidden w-full justify-center xl:flex"
         style={{
-          top: arrowsTopPosition,
+          bottom: arrowsBottomPosition,
         }}
       >
         <div className="relative w-desktop-carousel">
