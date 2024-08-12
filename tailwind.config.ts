@@ -14,9 +14,12 @@ const config: Config = {
       },
     },
     extend: {
+      height: {
+        header: "var(--desktop-header-height)",
+      },
       maxHeight: {
         drawer: "85svh",
-        "desktop-video": "75rem",
+        "desktop-video": "var(--desktop-video-max-height)",
       },
       maxWidth: {
         "desktop-carousel": "28rem",

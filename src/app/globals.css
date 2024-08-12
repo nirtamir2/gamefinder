@@ -16,6 +16,9 @@
   --button-background-brighter: 216, 6%, 16%;
   --white: 0, 0%, 100%;
   --rating: 156, 100%, 40%;
+
+  --desktop-header-height: 104px;
+  --desktop-video-max-height: 75rem;
 }
 
 body {

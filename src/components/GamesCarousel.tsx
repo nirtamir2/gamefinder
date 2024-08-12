@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { GameHeader } from "@/components/GameHeader";
 import { GameplayAsset } from "@/components/GameplayAsset";
@@ -13,8 +14,11 @@ import {
 } from "@/components/ui/Carousel";
 import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 
+const arrowsTopPosition = `calc(var(--desktop-header-height) + (100vh - var(--desktop-header-height) - var(--desktop-video-max-height)) / 2 + var(--desktop-video-max-height))`;
+
 export function GamesCarousel(props: { games: FetchGameDataResult }) {
   const { games } = props;
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
     <Carousel
@@ -24,7 +28,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
       orientation="vertical"
       plugins={[WheelGesturesPlugin()]}
     >
-      <CarouselContent>
+      <CarouselContent ref={ref}>
         {games.map((game) => {
           const assets = getGameplayAssets({
             game,
@@ -71,9 +75,14 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
           );
         })}
       </CarouselContent>
-      <div className="absolute bottom-24 hidden w-full justify-center xl:flex">
-        <div className="relative h-0 w-desktop-carousel bg-red-400">
-          <div className="absolute -right-20 bottom-0">
+      <div
+        className="absolute hidden w-full justify-center xl:flex"
+        style={{
+          top: arrowsTopPosition,
+        }}
+      >
+        <div className="relative w-desktop-carousel">
+          <div className="absolute -right-20 bottom-36">
             <div className="flex flex-col gap-4">
               <CarouselPrevious />
               <CarouselNext />

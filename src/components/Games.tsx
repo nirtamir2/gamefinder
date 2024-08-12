@@ -22,7 +22,7 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
     <main className="container flex min-h-dvh flex-col xl:max-w-full">
       <div className="left-0 top-0 z-10 h-0 w-full xl:sticky">
         {isDesktop ? (
-          <div className="flex w-full justify-between">
+          <header className="flex h-header w-full justify-between">
             <Link href={pathFor("/")} className="h-0 shrink-0">
               <Image
                 src={cubeImageSrc}
@@ -34,7 +34,7 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
             <div className="flex w-full items-center justify-center bg-black/20 bg-gradient-to-b from-background to-transparent pr-32 pt-12">
               <DiscoverGamesDesktopForm />
             </div>
-          </div>
+          </header>
         ) : (
           <div className="flex justify-center bg-gradient-to-b from-background to-transparent px-8 pb-8 pt-12">
             <DiscoverGamesDrawer
