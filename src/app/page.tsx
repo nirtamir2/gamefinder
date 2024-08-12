@@ -32,7 +32,9 @@ export default async function Home() {
           <MainPageForm />
         </GameProvider>
       </div>
-      <PoweredByGeminiFooter />
+      <div className="pt-32">
+        <PoweredByGeminiFooter />
+      </div>
     </div>
   );
 }
