@@ -37,7 +37,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                 key={game.id}
                 className="size-full xl:flex xl:items-center xl:justify-center"
               >
-                <div className="relative size-full xl:max-h-desktop-video xl:max-w-desktop-carousel">
+                <div className="relative size-full xl:max-h-desktop-video xl:max-w-desktop-carousel xl:pt-20">
                   {assets.map((asset, index) => {
                     if (index === 0) {
                       return (
@@ -50,7 +50,7 @@ export function GamesCarousel(props: { games: FetchGameDataResult }) {
                     }
                     return null;
                   })}
-                  <div className="absolute right-0 z-10 w-full max-xl:bottom-0 xl:top-0 xl:size-0">
+                  <div className="absolute right-0 z-10 w-full max-xl:bottom-0 xl:top-0 xl:size-0 xl:pt-20">
                     <div className="z-10 w-full bg-gradient-to-b from-transparent via-background via-50% to-background p-8 xl:relative xl:flex xl:w-96 xl:flex-col xl:pt-0">
                       <GameHeader
                         name={game.gameData.name}
