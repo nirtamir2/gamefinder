@@ -22,5 +22,5 @@
 }
 
 body {
-  @apply bg-black text-primary;
+  @apply bg-background text-primary;
 }
