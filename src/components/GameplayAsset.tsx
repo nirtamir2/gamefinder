@@ -26,8 +26,8 @@ export function GameplayAsset(props: Props) {
     );
 
   return (
-    <div className="size-full xl:pb-24 xl:pt-44">
-      <div className="relative size-full">
+    <div className="flex size-full items-center justify-center">
+      <div className="relative size-full xl:max-h-desktop-video">
         {asset.type === "image" ? (
           <Image
             fill

@@ -16,6 +16,7 @@ const config: Config = {
     extend: {
       height: {
         header: "var(--desktop-header-height)",
+        "desktop-video": "var(--desktop-video-max-height)",
       },
       maxHeight: {
         drawer: "85svh",
