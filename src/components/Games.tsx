@@ -56,14 +56,14 @@ function DiscoverGamesPage(props: {
 
 export function Games() {
   const { likedGames, genres, platforms } = useGameProvider();
-  const data = fetchGamesData({
+  const gamesPromise = fetchGamesData({
     likedGames,
     genres,
     platforms,
   });
   return (
     <Suspense fallback={<LoadingPage />}>
-      <DiscoverGamesPage gamesPromise={data} />
+      <DiscoverGamesPage gamesPromise={gamesPromise} />
     </Suspense>
   );
 }
