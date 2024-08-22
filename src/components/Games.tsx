@@ -1,10 +1,10 @@
 "use client";
 
+import { Suspense, use } from "react";
 import { pathFor } from "@nirtamir2/next-static-paths";
 import Image from "next/image";
 import Link from "next/link";
-import LoadingPage from "@/app/debug/loading/page";
-import ErrorPage from "@/app/discover/error";
+import LoadingPage from "@/app/loading";
 import cubeImageSrc from "@/assets/cube.png";
 import { DiscoverGamesDesktopForm } from "@/components/DiscoverGamesDesktopForm";
 import { DiscoverGamesDrawer } from "@/components/DiscoverGamesDrawer";
@@ -13,10 +13,10 @@ import { useMediaQuery } from "@/components/hooks/useMediaQuery";
 import { useGameProvider } from "@/components/providers/GameContext";
 import { IconButton } from "@/components/ui/IconButton";
 import type { FetchGameDataResult } from "@/lib/fetchGamesData";
-import { useGamesQuery } from "@/react-query/useGamesQuery";
+import { fetchGamesData } from "@/lib/fetchGamesData";
 
-function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
-  const { games } = props;
+function DiscoverGamesPage(props: { games: Promise<FetchGameDataResult> }) {
+  const games = use(props.games);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   return (
     <main className="container flex min-h-dvh flex-col xl:max-w-full">
@@ -53,19 +53,14 @@ function DiscoverGamesPage(props: { games: FetchGameDataResult }) {
 
 export function Games() {
   const { likedGames, genres, platforms } = useGameProvider();
-  const { data, isPending, error, isSuccess } = useGamesQuery({
+  const data = fetchGamesData({
     likedGames,
     genres,
     platforms,
   });
-  if (isPending) {
-    return <LoadingPage />;
-  }
-  if (error) {
-    return <ErrorPage error={error} />;
-  }
-  if (isSuccess) {
-    return <DiscoverGamesPage games={data} />;
-  }
-  return null;
+  return (
+    <Suspense fallback={<LoadingPage />}>
+      <DiscoverGamesPage games={data} />
+    </Suspense>
+  );
 }
