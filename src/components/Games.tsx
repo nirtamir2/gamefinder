@@ -15,8 +15,11 @@ import { IconButton } from "@/components/ui/IconButton";
 import type { FetchGameDataResult } from "@/lib/fetchGamesData";
 import { fetchGamesData } from "@/lib/fetchGamesData";
 
-function DiscoverGamesPage(props: { games: Promise<FetchGameDataResult> }) {
-  const games = use(props.games);
+function DiscoverGamesPage(props: {
+  gamesPromise: Promise<FetchGameDataResult>;
+}) {
+  const { gamesPromise } = props;
+  const games = use(gamesPromise);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   return (
     <main className="container flex min-h-dvh flex-col xl:max-w-full">
@@ -60,7 +63,7 @@ export function Games() {
   });
   return (
     <Suspense fallback={<LoadingPage />}>
-      <DiscoverGamesPage games={data} />
+      <DiscoverGamesPage gamesPromise={data} />
     </Suspense>
   );
 }
