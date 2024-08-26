@@ -1,17 +1,11 @@
 "use server";
 
 import { pathFor } from "@nirtamir2/next-static-paths";
-import { redirect } from "next/navigation";
-import { createSerializer } from "nuqs/server";
+import { revalidatePath } from "next/cache";
+import { searchParamsSchemaSerializer } from "@/app/discover/actions/searchParamsSchemaSerializer";
 import { stringArraySchema } from "@/utils/stringArraySchema";
 
-const searchParamsSchemaSerializer = createSerializer({
-  likedGames: stringArraySchema,
-  genres: stringArraySchema,
-  platforms: stringArraySchema,
-});
-
-export async function navigateToSearchResult(data: FormData) {
+export async function navigateToSearchResult(_: unknown, data: FormData) {
   const likedGames = String(data.get("likedGames"));
   const genres = String(data.get("genres"));
   const platforms = String(data.get("platforms"));
@@ -24,5 +18,5 @@ export async function navigateToSearchResult(data: FormData) {
 
   const url = `${pathFor("/discover")}${searchParams}`;
 
-  redirect(url);
+  revalidatePath(url);
 }

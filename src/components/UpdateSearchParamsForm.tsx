@@ -1,8 +1,11 @@
 "use client";
 
-import { navigateToSearchResult } from "@/app/discover/actions/navigateToSearchResult.action";
+import { pathFor } from "@nirtamir2/next-static-paths";
+import { useRouter } from "next/navigation";
+import { searchParamsSchemaSerializer } from "@/app/discover/actions/searchParamsSchemaSerializer";
 import { Button } from "@/components/ui/Button";
 import { formatList } from "@/utils/formatList";
+import { stringArraySchema } from "@/utils/stringArraySchema";
 
 export function UpdateSearchParamsForm(props: {
   likedGames: string;
@@ -11,10 +14,24 @@ export function UpdateSearchParamsForm(props: {
   onChangeLikedGames: (likedGames: string) => void;
 }) {
   const { likedGames, platforms, onClickPlatforms, onChangeLikedGames } = props;
+  const router = useRouter();
 
   return (
     <form
-      action={navigateToSearchResult}
+      action={(formData) => {
+        const likedGames = String(formData.get("likedGames"));
+        const genres = String(formData.get("genres"));
+        const platforms = String(formData.get("platforms"));
+
+        const searchParams = searchParamsSchemaSerializer({
+          likedGames: stringArraySchema.parseServerSide(likedGames),
+          genres: stringArraySchema.parseServerSide(genres),
+          platforms: stringArraySchema.parseServerSide(platforms),
+        });
+
+        const url = `${pathFor("/discover")}${searchParams}`;
+        router.push(url);
+      }}
       className="container flex flex-col gap-8 p-8"
     >
       <input id="generes" type="text" name="genres" className="hidden" />
